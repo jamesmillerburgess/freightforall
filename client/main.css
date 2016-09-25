@@ -1,33 +1,114 @@
-/* CSS declarations go here */
 .navbar {
+  border: 0;
   margin-bottom: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 
-html, body, .container-fluid, .row {
+html, body {
   height: 100%;
+  overflow: hidden;
+}
+
+p {
+  margin: 0;
 }
 
 .main {
-  padding-top: 3.6em;
+  height: 100%;
+  padding: 0;
+  background-color: darkgrey;
+}
+
+.content {
+  margin: 0;
   height: 100%;
 }
 
 .sidebar {
-  max-height: 100%;
-  height: 100%;
+  max-height: none;
+  height: calc(100% - 50px);
   padding: 0;
-  margin-left: 1px;
+  background-color: rgb(254, 254, 254);
 }
 
-.btn-sidebar {
-  text-align: left;
+.sidebar-search-container {
+  width: 100%;
+  height: 50px;
+  padding-top: 7px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: #f0f0f0;
+  border-bottom: 1px #222;
 }
 
-
-.panel {
-  margin-bottom: 0;
+.sidebar-search {
+  border: 0;
+  font-size: 15px;
+  outline: 0 none;
 }
 
-.content {
-  height: 100%;
+.sidebar-search:focus {
+  border: 0;
+  -webkit-box-shadow: 0;
+  -moz-box-shadow: 0;
+  box-shadow: 0;
+  outline: 0 none;
+}
+
+.sidebar-search-container .glyphicon {
+  font-size: 15px;
+  color: #888;
+}
+
+.inner-addon {
+  position: relative;
+}
+
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+.left-addon .glyphicon { left: 0; }
+.right-addon .glyphicon { right: 0; }
+
+.left-addon input { padding-left: 40px; }
+.right-addon input { padding-right: 40px; }
+
+.sidebar-item-list {
+  max-height: none;
+  height: calc(100% - 50px);
+  padding: 0;
+  background-color: rgb(254, 254, 254);
+  overflow-y: auto;
+}
+
+.sidebar-item {
+  padding: 5px;
+  margin: 0;
+  border-bottom: 1px solid rgb(242, 242, 242);
+}
+
+.details {
+  padding: 10px;
+  max-height: none;
+  height: calc(100% - 50px);
+  background: rgb(192, 193, 196);
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.0784314);
 }
