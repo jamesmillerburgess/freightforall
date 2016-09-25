@@ -1,1 +1,7 @@
-{}
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://admin:Cdjuices1@ds029456.mlab.com:29456/freightforall"
+    }
+  }
+}
