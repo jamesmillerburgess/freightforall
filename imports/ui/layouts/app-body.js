@@ -4,12 +4,10 @@ import { Jobs } from '../../api/jobs/jobs.js';
 
 import './app-body.html';
 
-Meteor.startup(() => {
-
-});
+Meteor.startup(() => {});
 
 Template.App_body.onCreated(function appBodyOnCreated() {
-  this.subscribe('Jobs.private');
+  this.subscribe('jobs.private');
 });
 
 Template.App_body.helpers({
