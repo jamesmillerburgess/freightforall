@@ -37,10 +37,13 @@
         </div>
         <div class="sidebar-item-list">
           {{#each job in Jobs}}
-            <div class="panel sidebar-item">
-              <p>{{formatJobNumber job.number}} - {{job.shipper}}</p>
-              <p>{{formatNumContainers job.numContainers}} - {{job.originLocation}} <span class="glyphicon glyphicon-arrow-right"></span> {{job.destinationLocation}}</p>
-            </div>
+            <a href="/job/{{job.number}}">
+              <div class="panel sidebar-item">
+                <p>{{formatJobNumber job.number}} - {{job.shipper}}</p>
+                <p>{{formatNumContainers job.numContainers}} - {{job.originLocation}} <span
+                  class="glyphicon glyphicon-arrow-right"></span> {{job.destinationLocation}}</p>
+              </div>
+            </a>
           {{else}}
             <div class="panel sidebar-item">
               <p>No jobs yet!</p>

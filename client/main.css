@@ -90,6 +90,12 @@ p {
   padding: 5px;
   margin: 0;
   border-bottom: 1px solid rgb(242, 242, 242);
+
+}
+
+a, a:link, a:hover, a:active, a:visited {
+  color: #000;
+  text-decoration: none;
 }
 
 .details {
