@@ -15,7 +15,7 @@ p {
   margin: 0;
 }
 
-.main {
+.app {
   height: 100%;
   padding: 0;
   background-color: darkgrey;
@@ -98,7 +98,7 @@ a, a:link, a:hover, a:active, a:visited {
   text-decoration: none;
 }
 
-.details {
+.Main {
   padding: 10px;
   max-height: none;
   height: calc(100% - 50px);

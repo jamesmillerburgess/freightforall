@@ -22,3 +22,4 @@ twbs:bootstrap
 less@2.7.5_1
 kadira:flow-router
 kadira:blaze-layout
+aldeed:simple-schema
