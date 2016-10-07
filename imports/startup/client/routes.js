@@ -12,7 +12,14 @@ FlowRouter.route('/', {
   name: 'App.home',
   action() {
     BlazeLayout.render('App_body', { main: 'App_rootRedirector' });
-  },
+  }
+});
+
+FlowRouter.route('/job/:_id', {
+  name: 'Job.show',
+  action() {
+    BlazeLayout.render('Main', { main: 'Jobs_showPage' });
+  }
 });
 
 FlowRouter.notFound = {
