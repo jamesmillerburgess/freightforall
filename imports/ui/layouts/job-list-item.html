@@ -1,0 +1,9 @@
+<template name="JobListItem">
+  <a href="/job/{{job.number}}">
+    <div class="panel sidebar-item {{#if isActive}}active{{/if}}">
+      <p>{{formatJobNumber job.number}} - {{job.shipper}}</p>
+      <p>{{formatNumContainers job.numContainers}} - {{job.originLocation}} <span
+        class="glyphicon glyphicon-arrow-right"></span> {{job.destinationLocation}}</p>
+    </div>
+  </a>
+</template>

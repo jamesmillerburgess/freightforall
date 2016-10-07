@@ -90,7 +90,14 @@ p {
   padding: 5px;
   margin: 0;
   border-bottom: 1px solid rgb(242, 242, 242);
+}
 
+.sidebar-item:hover {
+  background-color: #F4F5F5;
+}
+
+.sidebar-item-list .active {
+  background-color: #e9ebeb;
 }
 
 a, a:link, a:hover, a:active, a:visited {

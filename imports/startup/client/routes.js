@@ -3,6 +3,7 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
 // Import to load templates
 import '../../ui/layouts/app-body.js';
+import '../../ui/layouts/job-list-item.js';
 import '../../ui/layouts/jobs-show-page.js';
 import '../../ui/pages/root-redirector.js';
 import '../../ui/pages/app-not-found.js';
