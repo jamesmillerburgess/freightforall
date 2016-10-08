@@ -90,6 +90,11 @@ p {
   margin: 0;
   border-bottom: 1px solid rgb(242, 242, 242);
   color: #4b4b4b;
+  border-radius: 0px;
+}
+
+.sidebar-item .job-status {
+  color: rgba(0,0,0,.4);
 }
 
 .sidebar-item:hover {
@@ -179,5 +184,5 @@ a, a:link, a:hover, a:active, a:visited {
 
 .sidebar-item .job-number {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 }

@@ -12,10 +12,22 @@ Meteor.startup(() => {
         shipper: 'Presspart Engineering Ltd',
         consignee: 'AIA Engineering Ltd',
         numContainers: 2,
-        originLocation: 'London – GBLON',
-        portOfLoading: 'Felixstowe – GBFXT',
-        portOfDischarge: 'Nhava Sheva – INNSA',
-        destinationLocation: 'Mumbai – INBOM',
+        origin: {
+          name: 'London',
+          code: 'GBLON'
+        },
+        portOfLoading: {
+          name: 'Felixstowe',
+          code: 'GBFXT'
+        },
+        portOfDischarge: {
+          name: 'Nhava Sheva',
+          code: 'INNSA'
+        },
+        destination: {
+          name: 'Mumbai',
+          code: 'INBOM'
+        },
         cargo: {
           containers: [
             {
@@ -46,6 +58,7 @@ Meteor.startup(() => {
               number: 'MSCU2345672',
               type: '45HC',
               numPackages: 1,
+              packageType: 'pallet',
               grossWeight: 50,
               volume: 1,
               packages: []
@@ -58,8 +71,14 @@ Meteor.startup(() => {
         shipper: 'AIA Engineering Ltd',
         consignee: 'Hello Bibles Inc',
         numContainers: 1,
-        originLocation: 'INNSA',
-        destinationLocation: 'GBFXT'
+        origin: {
+          name: 'Nhava Sheva',
+          code: 'INNSA'
+        },
+        destination: {
+          name: 'Felixstowe',
+          code: 'GBFXT'
+        },
       },
       {
         number: 3,
@@ -93,10 +112,10 @@ Meteor.startup(() => {
         shipper: job.shipper,
         consignee: job.consignee,
         numContainers: job.numContainers,
-        originLocation: job.originLocation,
+        origin: job.origin,
         portOfLoading: job.portOfLoading,
         portOfDischarge: job.portOfDischarge,
-        destinationLocation: job.destinationLocation,
+        destination: job.destination,
         cargo: job.cargo
       });
 
