@@ -1,14 +1,80 @@
 <template name="Jobs_showPage">
   {{#if job}}
     <div class="row job-header">
-      <div class="col-md-3 col-sm-3">{{job.number}}</div>
-      <div class="col-md-9 col-sm-9">{{job.shipper}} shipping to {{job.consignee}}</div>
+      <div class="col-md-1 col-sm-1 job-number"><h4><b>{{job.number}}</b></h4></div>
+      <div class="col-md-11 col-sm-11 text-center"><h4><b>{{job.shipper}}</b> shipping to <b>{{job.consignee}}</b></h4></div>
     </div>
-    <div class="row job-movement">
-      <div class="col-md-12 col-sm-12">Movement</div>
+    <div class="row job-movement text-center">
+      <div class="col-md-3 col-sm-3">
+        <div class="movement-checkpoint">
+          <span class="glyphicon glyphicon-unchecked movement-icon"></span>
+          <p>{{job.originLocation}}</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <div class="movement-checkpoint">
+          <span class="glyphicon glyphicon-unchecked movement-icon"></span>
+          <p>{{job.portOfLoading}}</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <div class="movement-checkpoint">
+          <span class="glyphicon glyphicon-unchecked movement-icon"></span>
+          <p>{{job.portOfDischarge}}</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <div class="movement-checkpoint">
+          <span class="glyphicon glyphicon-unchecked movement-icon"></span>
+          <p>{{job.destinationLocation}}</p>
+        </div>
+      </div>
     </div>
     <div class="row job-cargo">
-      <div class="col-md-12 col-sm-12">Cargo</div>
+      <div class="col-md-12 col-sm-12">
+        {{#each container in job.cargo.containers}}
+          <div class="cargo-container">
+            <div class="row container-header">
+              <div class="col-md-3 col-sm-3">
+                {{container.number}}
+              </div>
+              <div class="col-md-2 col-sm-2">
+                {{container.type}}
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-2 text-right">
+                {{container.numPackages}} {{formatPackageType container.packageType container.numPackages}}
+              </div>
+              <div class="col-md-2 text-right">
+                {{formatWeight container.grossWeight}}
+              </div>
+              <div class="col-md-2 text-right">
+                {{formatVolume container.volume}}
+              </div>
+            </div>
+            {{#each package in container.packages}}
+              <div class="cargo-package">
+                <div class="row">
+                  <div class="col-md-5">
+                    {{package.description}}
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-2 text-right">
+                    {{package.numPackages}} {{formatPackageType package.packageType package.numPackages}}
+                  </div>
+                  <div class="col-md-2 text-right">
+                    {{formatWeight package.grossWeight}}
+                  </div>
+                  <div class="col-md-2 text-right">
+                    {{formatVolume package.volume}}
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+
+          </div>
+        {{/each}}
+      </div>
     </div>
   {{else}}
     Access denied.
