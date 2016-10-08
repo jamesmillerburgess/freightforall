@@ -1,7 +1,16 @@
 <template name="Jobs_showPage">
   {{#if job}}
-    {{job.shipper}}
+    <div class="row job-header">
+      <div class="col-md-3 col-sm-3">{{job.number}}</div>
+      <div class="col-md-9 col-sm-9">{{job.shipper}} shipping to {{job.consignee}}</div>
+    </div>
+    <div class="row job-movement">
+      <div class="col-md-12 col-sm-12">Movement</div>
+    </div>
+    <div class="row job-cargo">
+      <div class="col-md-12 col-sm-12">Cargo</div>
+    </div>
   {{else}}
-    ???
+    Access denied.
   {{/if}}
 </template>
