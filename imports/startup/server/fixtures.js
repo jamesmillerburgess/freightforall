@@ -9,7 +9,7 @@ Meteor.startup(() => {
     const data = [
       {
         number: 1,
-        shipper: 'Presspart Engineering Ltd',
+        shipper: 'Presspart Manufacturing Ltd',
         consignee: 'AIA Engineering Ltd',
         numContainers: 2,
         origin: {
