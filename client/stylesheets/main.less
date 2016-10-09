@@ -1,5 +1,7 @@
+@job-section-padding: 15px;
+
 .main {
-  padding: 10px;
+  padding: @job-section-padding;
   max-height: none;
   height: calc(~'100% - 50px');
   background-color: #f5f5f5;
@@ -7,22 +9,24 @@
     width: calc(~'100% - 5px');
     padding-left: 5px;
     .job-header {
-      padding-bottom: 15px;
+      padding-bottom: @job-section-padding;
       font-size: 20px;
       .job-number, .shipper, .consignee {
         font-weight: bold;
       }
       .job-number {
         position: absolute;
+        left: 10px;
       }
     }
     .job-movement {
-      padding-bottom: 15px;
+      padding-bottom: @job-section-padding;
       .movement-icon {
         font-size: 32px;
       }
     }
     .job-cargo {
+      padding-bottom: @job-section-padding;
       .cargo-container {
         border-radius: 5px;
         background-color: #ddd;
