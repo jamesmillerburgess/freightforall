@@ -2,9 +2,10 @@
   <div class="job">
     {{#if job}}
       <div class="row job-header">
-        <div class="col-md-1 col-sm-1 job-number"><h4><b>{{job.number}}</b></h4></div>
-        <div class="col-md-11 col-sm-11 text-center"><h4><b>{{job.shipper}}</b> shipping to <b>{{job.consignee}}</b>
-        </h4></div>
+        <div class="col-md-1 col-sm-1 job-number">{{job.number}}</div>
+        <div class="col-md-11 col-sm-11 text-center">
+          <span class="shipper">{{job.shipper}}</span> shipping to <span class="consignee">{{job.consignee}}</span>
+        </div>
       </div>
       <div class="row job-movement text-center">
         <div class="col-md-3 col-sm-3">
