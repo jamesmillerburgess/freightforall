@@ -1,68 +1,74 @@
 .sidebar {
-  max-height: none;
   height: calc(~'100% - 50px');
   padding: 0;
   background-color: rgb(254, 254, 254);
-  .sidebar-search-container {
-    width: 100%;
-    height: 50px;
-    padding-top: 7px;
-    padding-left: 12px;
-    padding-right: 12px;
-    background-color: #f0f0f0;
-    border-bottom: 1px #222;
-    .inner-addon {
-      position: relative;
-      left: 0;
-      .glyphicon {
+  .sidebar-list {
+    height: 100%;
+    .sidebar-search-container {
+      width: 100%;
+      height: 50px;
+      padding-top: 7px;
+      padding-left: 12px;
+      padding-right: 12px;
+      background-color: #f0f0f0;
+      border-bottom: 1px #222;
+      .inner-addon {
+        position: relative;
+        left: 0;
+        .glyphicon {
+          font-size: 15px;
+          color: #888;
+          position: absolute;
+          padding: 10px;
+          pointer-events: none;
+        }
+        input {
+          padding-left: 40px;
+        }
+      }
+      .sidebar-search {
+        border: 0;
         font-size: 15px;
-        color: #888;
-        position: absolute;
-        padding: 10px;
-        pointer-events: none;
+        outline: 0 none;
       }
-      input {
-        padding-left: 40px;
-      }
-    }
-    .sidebar-search {
-      border: 0;
-      font-size: 15px;
-      outline: 0 none;
-    }
-    .sidebar-search:focus {
-      border: 0;
-      -webkit-box-shadow: 0;
-      -moz-box-shadow: 0;
-      box-shadow: 0;
-      outline: 0 none;
-    }
-  }
-  .sidebar-item-list {
-    max-height: none;
-    height: calc(~'100% - 50px');
-    padding: 0;
-    background-color: rgb(254, 254, 254);
-    overflow-y: auto;
-    .sidebar-item {
-      padding: 5px;
-      margin: 0;
-      border-bottom: 1px solid rgb(242, 242, 242);
-      color: #4b4b4b;
-      border-radius: 0px;
-      .job-number {
-        font-weight: bold;
-        font-size: 20px;
-      }
-      .job-status {
-        color: rgba(0, 0, 0, .4);
+      .sidebar-search:focus {
+        border: 0;
+        -webkit-box-shadow: 0;
+        -moz-box-shadow: 0;
+        box-shadow: 0;
+        outline: 0 none;
       }
     }
-    .active {
-      background-color: #e9ebeb;
-    }
-    .sidebar-item:hover {
-      background-color: #F4F5F5;
+    .sidebar-item-list {
+      max-height: none;
+      height: calc(~'100% - 50px');
+      padding: 0;
+      background-color: rgb(254, 254, 254);
+      overflow-y: auto;
+      .sidebar-item {
+        padding: 5px;
+        margin: 0;
+        border-bottom: 1px solid rgb(242, 242, 242);
+        color: #4b4b4b;
+        border-radius: 0px;
+        .row {
+          width: 100%;
+          margin: 0px;
+          .job-number {
+            font-weight: bold;
+            font-size: 20px;
+          }
+          .job-status {
+            color: rgba(0, 0, 0, .4);
+          }
+        }
+      }
+      .active {
+        background-color: #e9ebeb;
+      }
+      .sidebar-item:hover {
+        background-color: #F4F5F5;
+      }
     }
   }
 }
