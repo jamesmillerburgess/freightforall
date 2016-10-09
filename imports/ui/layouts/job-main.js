@@ -4,7 +4,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Jobs } from '../../api/jobs/jobs.js';
 
 import { listRenderHold } from '../launch-screen.js';
-import './jobs-show-page.html';
+import './job-main.html';
 
 Template.Jobs_showPage.onCreated(function jobsShowPageOnCreated() {
   this.getNumber = () => FlowRouter.getParam('_id');
