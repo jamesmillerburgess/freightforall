@@ -1,4 +1,4 @@
-@job-section-padding: 15px;
+@import 'variables.less';
 
 .main {
   padding: @job-section-padding;
@@ -10,7 +10,7 @@
     padding-left: 5px;
     .job-header {
       padding-bottom: @job-section-padding;
-      font-size: 20px;
+      font-size: @header-font-size;
       .job-number, .shipper, .consignee {
         font-weight: bold;
       }
@@ -36,8 +36,8 @@
         .container-header {
           padding-top: 3px;
           padding-bottom: 3px;
-          margin-left: 0px;
-          margin-right: 0px;
+          margin-left: 0;
+          margin-right: 0;
         }
         .cargo-package {
           border-radius: 5px;

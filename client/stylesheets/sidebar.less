@@ -1,3 +1,5 @@
+@import 'variables.less';
+
 .sidebar {
   height: calc(~'100% - 50px');
   padding: 0;
@@ -50,13 +52,13 @@
         margin: 0;
         border-bottom: 1px solid rgb(242, 242, 242);
         color: #4b4b4b;
-        border-radius: 0px;
+        border-radius: 0;
         .row {
           width: 100%;
-          margin: 0px;
+          margin: 0;
           .job-number {
             font-weight: bold;
-            font-size: 20px;
+            font-size: @header-font-size;
           }
           .job-status {
             padding: 0;
