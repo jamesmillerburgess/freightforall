@@ -13,5 +13,5 @@ Template.App_body.onCreated(function appBodyOnCreated() {
 });
 
 Template.App_body.helpers({
-  Jobs() { return Jobs.find(); }
+  Jobs() { return Jobs.find({}, {sort: {number: -1}}); }
 });
