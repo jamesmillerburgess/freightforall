@@ -8,7 +8,7 @@ Meteor.startup(() => {
 
     const data = [
       {
-        number: 1,
+        number: 5,
         shipper: 'Presspart Manufacturing Ltd',
         consignee: 'AIA Engineering Ltd',
         numContainers: 2,
@@ -67,7 +67,7 @@ Meteor.startup(() => {
         }
       },
       {
-        number: 2,
+        number: 4,
         shipper: 'AIA Engineering Ltd',
         consignee: 'Hello Bibles Inc',
         numContainers: 1,
@@ -89,7 +89,7 @@ Meteor.startup(() => {
         destinationLocation: 'USNYC'
       },
       {
-        number: 4,
+        number: 2,
         shipper: 'Siemens',
         consignee: 'Nokia Corp',
         numContainers: 3,
@@ -97,7 +97,7 @@ Meteor.startup(() => {
         destinationLocation: 'CNSNG'
       },
       {
-        number: 5,
+        number: 1,
         shipper: 'Microsoft Corporation',
         consignee: 'Apple Computer',
         numContainers: 1,
