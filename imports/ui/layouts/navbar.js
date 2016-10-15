@@ -9,6 +9,7 @@ import './navbar.html';
 Template.Navbar.events({
   'click #add-job'() {
     const lastJobNumber = Jobs.findOne({}, {sort: { number: -1}}).number + 1;
-    Meteor.call('jobs.addNew', lastJobNumber, () => FlowRouter.go('/job/' + lastJobNumber));
+    Meteor.call('jobs.addNew', lastJobNumber);
+    FlowRouter.go('/job/' + lastJobNumber)
   }
 });
