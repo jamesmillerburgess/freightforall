@@ -68,6 +68,7 @@ Meteor.startup(() => {
       },
       {
         number: 4,
+        archived: true,
         shipper: 'AIA Engineering Ltd',
         consignee: 'Hello Bibles Inc',
         numContainers: 1,
@@ -109,6 +110,7 @@ Meteor.startup(() => {
     data.forEach((job) => {
       Jobs.insert({
         number: job.number,
+        archived: job.archived,
         shipper: job.shipper,
         consignee: job.consignee,
         numContainers: job.numContainers,

@@ -1,6 +1,6 @@
 <template name="JobListItem">
   <a href="/job/{{job.number}}">
-    <div class="panel sidebar-item {{#if isActive}}active{{/if}}">
+    <div class="panel sidebar-item {{#if isActive}}active{{/if}} {{archivedClass}}">
       <div class="row">
         <div class="col-md-6 job-number">{{job.number}}</div>
         <div class="col-md-6 job-status text-right">Departed</div>

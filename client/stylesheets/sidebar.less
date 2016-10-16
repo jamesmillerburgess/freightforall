@@ -66,10 +66,25 @@
           }
         }
       }
-      .active {
+      .sidebar-item.active, .sidebar-item.active:hover {
         background-color: #e9ebeb;
       }
+      .sidebar-item.archived {
+        color: #888888;
+      }
       .sidebar-item:hover {
+        background-color: #F4F5F5;
+      }
+      .show-archived-link {
+        color: #4b4b4b;
+        display: block;
+        font-size: 16px;
+        line-height: 18px;
+        text-align: center;
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+      .show-archived-link:hover {
         background-color: #F4F5F5;
       }
     }

@@ -9,5 +9,11 @@ Template.JobListItem.helpers({
     if (this.job.cargo && this.job.cargo.containers)
       return this.job.cargo.containers.length;
     return 0;
+  },
+  archivedClass() {
+    console.log(this.job);
+    if (this.job.archived) {
+      return 'archived';
+    }
   }
 });
