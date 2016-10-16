@@ -91,6 +91,7 @@ Meteor.startup(() => {
       },
       {
         number: 2,
+        archived: true,
         shipper: 'Siemens',
         consignee: 'Nokia Corp',
         numContainers: 3,

@@ -14,5 +14,6 @@ Template.JobListItem.helpers({
     if (this.job.archived) {
       return 'archived';
     }
-  }
+  },
+  isArchived() { return this.job.archived || false; }
 });

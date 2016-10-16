@@ -4,6 +4,11 @@
       <div class="row">
         <div class="col-md-6 job-number">{{job.number}}</div>
         <div class="col-md-6 job-status text-right">Departed</div>
+        {{#if isArchived}}
+          <span class="unarchive-icon glyphicon glyphicon-upload"></span>
+        {{else}}
+          <span class="archive-icon glyphicon glyphicon-download"></span>
+        {{/if}}
       </div>
       <p><span class="glyphicon glyphicon-export"></span> {{job.shipper}}</p>
       <p><span class="glyphicon glyphicon-import"></span> {{job.consignee}}</p>
