@@ -11,7 +11,6 @@ Template.JobListItem.helpers({
     return 0;
   },
   archivedClass() {
-    console.log(this.job);
     if (this.job.archived) {
       return 'archived';
     }

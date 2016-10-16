@@ -20,9 +20,19 @@
                 <p>No jobs yet!</p>
               </div>
             {{/each}}
-            <a class="show-archived-link" href="">
-              Show Archived Jobs
-            </a>
+            {{#if showArchivedJobs}}
+              {{#each job in ArchivedJobs}}
+                {{>JobListItem job=job}}
+              {{else}}
+                <div class="panel sidebar-item">
+                  <p>No archived jobs!</p>
+                </div>
+              {{/each}}
+            {{else}}
+              <a class="show-archived-link" href="">
+                Show Archived Jobs
+              </a>
+            {{/if}}
           </div>
         </div>
       </div>

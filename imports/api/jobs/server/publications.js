@@ -4,10 +4,6 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {Jobs} from '../jobs.js';
 
 Meteor.publish('jobs.private', function jobsPrivate() {
-  //if (!this.userId) {
-  //  return this.ready();
-  //}
-
   return Jobs.find();
 });
 
