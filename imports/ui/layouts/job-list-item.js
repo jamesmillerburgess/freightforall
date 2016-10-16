@@ -17,3 +17,14 @@ Template.JobListItem.helpers({
   },
   isArchived() { return this.job.archived || false; }
 });
+
+Template.JobListItem.events({
+  'click .archive-icon'(e) {
+    e.preventDefault();
+    Meteor.call('jobs.archive', this.job._id);
+  },
+  'click .unarchive-icon'(e) {
+    e.preventDefault();
+    Meteor.call('jobs.unarchive', this.job._id);
+  }
+});
