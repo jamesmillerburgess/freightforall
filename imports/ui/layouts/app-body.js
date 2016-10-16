@@ -30,5 +30,8 @@ Template.App_body.helpers({
 Template.App_body.events({
   'click .show-archived-link'() {
     Session.set('showArchivedJobs', true);
+  },
+  'click .hide-archived-link'() {
+    Session.set('showArchivedJobs', false);
   }
 });
