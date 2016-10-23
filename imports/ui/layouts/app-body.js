@@ -34,18 +34,12 @@ Template.App_body.helpers({
   FilteredJobs() {
     if (!Session.get('searchFilter'))
       return;
+
     // Search with the filter
     let cursor = Jobs.find(
-      {
-        search: {
-          $regex: Session.get('searchFilter'),
-          $options: 'i'
-        }
-      },
-      {
-        limit: 10
-      });
-    Session.set('numSearchResults', cursor.count());
+      {search: {$regex: Session.get('searchFilter'), $options: 'i'}},
+      {limit: 10}
+    );
     return cursor;
   },
   ArchivedJobs() {
@@ -56,9 +50,6 @@ Template.App_body.helpers({
   },
   searching() {
     return Session.get('searchInput');
-  },
-  noSearchResults() {
-    return Session.get('numSearchResults') === 0;
   }
 })
 ;
@@ -71,11 +62,14 @@ Template.App_body.events({
     Session.set('showArchivedJobs', false);
   },
   'input .sidebar-search'(e) {
+    // Store the input value
     Session.set('searchInput', e.target.value);
 
+    // Pure tokens for use in formatting
     const words = e.target.value.split(' ');
     Session.set('searchTokens', words);
 
+    // Build regex
     let searchFilter = '^';
     for (let w in words) {
       searchFilter += '(?=.*' + words[w] + ')';
