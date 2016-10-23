@@ -12,39 +12,39 @@
           </div>
           <div class="sidebar-item-list">
             {{#if searching}}
-              <a class="no-active-jobs" href="">
+              <a class="sidebar-message" href="">
                 Search Results:
               </a>
-              {{#if FilteredJobs}}
-                {{#each job in FilteredJobs}}
+              {{#if filteredJobs}}
+                {{#each job in filteredJobs}}
                   {{>JobListItem job=job}}
                 {{/each}}
               {{else}}
-                <a class="no-active-jobs" href="">
+                <a class="sidebar-message" href="">
                   None
                 </a>
               {{/if}}
             {{else}}
-              {{#each job in Jobs}}
+              {{#each job in activeJobs}}
                 {{>JobListItem job=job}}
               {{else}}
-                <a class="no-active-jobs" href="">
+                <a class="sidebar-message" href="">
                   No Active Jobs
                 </a>
               {{/each}}
               {{#if showArchivedJobs}}
-                {{#each job in ArchivedJobs}}
+                {{#each job in archivedJobs}}
                   {{>JobListItem job=job}}
                 {{else}}
-                  <div class="panel sidebar-item">
+                  <div class="sidebar-message">
                     <p>No archived jobs!</p>
                   </div>
                 {{/each}}
-                <a class="hide-archived-link" href="">
+                <a class="sidebar-message hide-archived-link" href="">
                   Hide Archived Jobs
                 </a>
               {{else}}
-                <a class="show-archived-link" href="">
+                <a class="sidebar-message show-archived-link" href="">
                   Show Archived Jobs
                 </a>
               {{/if}}

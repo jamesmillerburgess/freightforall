@@ -1,13 +1,3 @@
-UI.registerHelper('formatJobNumber', function (context, options) {
-  if (context) {
-    let jobNumber = context + '';
-    let zeroes = '0000000000';
-    zeroes = zeroes.slice(0, zeroes.length - jobNumber.length);
-    jobNumber = zeroes + jobNumber;
-    return jobNumber;
-  }
-});
-
 UI.registerHelper('formatText', function (context) {
   if (!context)
     return;
@@ -50,6 +40,8 @@ UI.registerHelper('formatText', function (context) {
       count = 0;
     }
   }
+
+  // For the case when the end of the string is matched
   if (found) {
     reduced.push([formattedText.length - count, formattedText.length]);
   }
@@ -67,6 +59,8 @@ UI.registerHelper('formatText', function (context) {
       formattedText.slice(reduced[p][0], reduced[p][1]) +
       closeB +
       formattedText.slice(reduced[p][1]);
+
+    // Offset calculated because the string gets longer after each tag
     offset += openB.length + closeB.length;
   }
 

@@ -1,4 +1,3 @@
-import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
@@ -7,10 +6,8 @@ import { Jobs } from '../../api/jobs/jobs.js';
 import './text-formatters.js';
 import './app-body.html';
 
-Meteor.startup(() => {
-});
-
 Template.App_body.onCreated(function appBodyOnCreated() {
+
   // Don't show archived jobs
   Session.set('showArchivedJobs', false);
 
@@ -28,21 +25,21 @@ Template.App_body.onCreated(function appBodyOnCreated() {
 });
 
 Template.App_body.helpers({
-  Jobs() {
+  activeJobs() {
     return Jobs.find({archived: {$ne: true}}, {sort: {number: -1}});
   },
-  FilteredJobs() {
+  filteredJobs() {
     if (!Session.get('searchFilter'))
       return;
 
     // Search with the filter
     let cursor = Jobs.find(
-      {search: {$regex: Session.get('searchFilter'), $options: 'i'}},
+      {search: {$regex: Session.get('searchFilter'), $options: 'gi'}},
       {limit: 10}
     );
     return cursor;
   },
-  ArchivedJobs() {
+  archivedJobs() {
     return Jobs.find({archived: true}, {sort: {number: -1}});
   },
   showArchivedJobs() {
