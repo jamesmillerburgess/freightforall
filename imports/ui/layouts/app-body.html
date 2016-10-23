@@ -1,8 +1,6 @@
 <template name="App_body">
   <div class="container-fluid app">
-
     {{>Navbar}}
-
     <div class="row content">
       <div class="col-md-3 col-sm-3 sidebar">
         <div class="sidebar-list">
@@ -13,28 +11,43 @@
             </div>
           </div>
           <div class="sidebar-item-list">
-            {{#each job in Jobs}}
-              {{>JobListItem job=job}}
-            {{else}}
+            {{#if searching}}
               <a class="no-active-jobs" href="">
-                No Active Jobs
+                Search Results:
               </a>
-            {{/each}}
-            {{#if showArchivedJobs}}
-              {{#each job in ArchivedJobs}}
+              {{#if FilteredJobs}}
+                {{#each job in FilteredJobs}}
+                  {{>JobListItem job=job}}
+                {{/each}}
+              {{else}}
+                <a class="no-active-jobs" href="">
+                  None
+                </a>
+              {{/if}}
+            {{else}}
+              {{#each job in Jobs}}
                 {{>JobListItem job=job}}
               {{else}}
-                <div class="panel sidebar-item">
-                  <p>No archived jobs!</p>
-                </div>
+                <a class="no-active-jobs" href="">
+                  No Active Jobs
+                </a>
               {{/each}}
-              <a class="hide-archived-link" href="">
-                Hide Archived Jobs
-              </a>
-            {{else}}
-              <a class="show-archived-link" href="">
-                Show Archived Jobs
-              </a>
+              {{#if showArchivedJobs}}
+                {{#each job in ArchivedJobs}}
+                  {{>JobListItem job=job}}
+                {{else}}
+                  <div class="panel sidebar-item">
+                    <p>No archived jobs!</p>
+                  </div>
+                {{/each}}
+                <a class="hide-archived-link" href="">
+                  Hide Archived Jobs
+                </a>
+              {{else}}
+                <a class="show-archived-link" href="">
+                  Show Archived Jobs
+                </a>
+              {{/if}}
             {{/if}}
           </div>
         </div>

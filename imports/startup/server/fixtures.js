@@ -5,6 +5,7 @@ import { Jobs } from '../../api/jobs/jobs.js';
 Meteor.startup(() => {
   if (Jobs.find().count() !== -1) {
     Jobs.remove({});
+    Jobs._ensureIndex({'search': 1});
 
     const data = [
       {
@@ -119,9 +120,13 @@ Meteor.startup(() => {
         portOfLoading: job.portOfLoading,
         portOfDischarge: job.portOfDischarge,
         destination: job.destination,
-        cargo: job.cargo
+        cargo: job.cargo,
+        search: job.number+' '+
+          job.shipper+' '+
+          job.consignee+' '+
+          (job.origin ? job.origin.code : '')+' '+
+          (job.destination ? job.destination.code : '')+' '
       });
-
     });
   }
 });
