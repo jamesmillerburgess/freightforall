@@ -1,9 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
-import { ReactiveVar } from 'meteor/reactive-var';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-
-import elasticlunr from 'elasticlunr';
 
 import { Jobs } from '../../api/jobs/jobs.js';
 
@@ -37,18 +34,11 @@ Template.App_body.helpers({
   FilteredJobs() {
     if (!Session.get('searchFilter'))
       return;
-    const words = Session.get('searchFilter').split(' ');
-    let searchFilter = '^';
-    for (let w in words) {
-      searchFilter += '(?=.*' + words[w] + ')';
-    }
-    searchFilter += '.+';
-
     // Search with the filter
     let cursor = Jobs.find(
       {
         search: {
-          $regex: searchFilter,
+          $regex: Session.get('searchFilter'),
           $options: 'i'
         }
       },
@@ -65,7 +55,7 @@ Template.App_body.helpers({
     return Session.get('showArchivedJobs');
   },
   searching() {
-    return Session.get('searchFilter') !== '';
+    return Session.get('searchInput');
   },
   noSearchResults() {
     return Session.get('numSearchResults') === 0;
@@ -81,6 +71,16 @@ Template.App_body.events({
     Session.set('showArchivedJobs', false);
   },
   'input .sidebar-search'(e) {
-    Session.set('searchFilter', e.target.value);
+    Session.set('searchInput', e.target.value);
+
+    const words = e.target.value.split(' ');
+    Session.set('searchTokens', words);
+
+    let searchFilter = '^';
+    for (let w in words) {
+      searchFilter += '(?=.*' + words[w] + ')';
+    }
+    searchFilter += '.+';
+    Session.set('searchFilter', searchFilter);
   }
 });

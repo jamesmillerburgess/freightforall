@@ -2,7 +2,7 @@
   <a href="/job/{{job.number}}">
     <div class="panel sidebar-item {{#if isActive}}active{{/if}} {{archivedClass}}">
       <div class="row">
-        <div class="col-md-6 job-number">{{job.number}}</div>
+        <div class="col-md-6 job-number">{{{formatText job.number}}}</div>
         <div class="col-md-6 job-status text-right">Departed</div>
         {{#if isArchived}}
           <span class="unarchive-icon glyphicon glyphicon-upload"></span>
@@ -10,11 +10,11 @@
           <span class="archive-icon glyphicon glyphicon-download"></span>
         {{/if}}
       </div>
-      <p><span class="glyphicon glyphicon-export"></span> {{job.shipper}}</p>
-      <p><span class="glyphicon glyphicon-import"></span> {{job.consignee}}</p>
-      <p><span class="glyphicon glyphicon-globe"></span> {{job.origin.code}} <span
-        class="glyphicon glyphicon-arrow-right"></span> {{job.destination.code}}</p>
-      <p><span class="glyphicon glyphicon-oil"></span> {{numContainers}}</p>
+      <p><span class="glyphicon glyphicon-export"></span> {{{formatText job.shipper}}}</p>
+      <p><span class="glyphicon glyphicon-import"></span> {{{formatText job.consignee}}}</p>
+      <p><span class="glyphicon glyphicon-globe"></span> {{{formatText job.origin.code}}} <span
+        class="glyphicon glyphicon-arrow-right"></span> {{{formatText job.destination.code}}}</p>
+      <p><span class="glyphicon glyphicon-oil"></span> {{{formatText numContainers}}}</p>
     </div>
   </a>
 </template>
