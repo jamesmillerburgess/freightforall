@@ -24,3 +24,6 @@ kadira:flow-router
 kadira:blaze-layout
 aldeed:simple-schema
 session@1.1.6
+accounts-base
+accounts-ui
+accounts-password

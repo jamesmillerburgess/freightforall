@@ -3,9 +3,10 @@
     {{#if job}}
       <div class="row job-header">
         <div class="col-md-1 col-sm-1 job-number">{{job.number}}</div>
-        <div class="col-md-12 col-sm-12 text-center">
-          <span class="shipper">{{job.shipper}}</span> shipping to <span class="consignee">{{job.consignee}}</span>
-        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 text-center job-party"><textarea class="shipper" spellcheck="false">{{job.shipper}}</textarea></div>
+        <div class="col-md-2 text-center job-party"> shipping to </div>
+        <div class="col-md-4 text-center job-party"><textarea class="consignee" spellcheck="false">{{job.consignee}}</textarea></div>
       </div>
       <div class="row job-movement text-center">
         <div class="col-md-3 col-sm-3">

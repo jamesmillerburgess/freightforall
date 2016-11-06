@@ -18,6 +18,29 @@
         position: absolute;
         left: 10px;
       }
+      .job-party {
+        padding: 0;
+      }
+      .shipper, .consignee {
+        border: 0;
+        border-radius: 3px;
+        background: 0 0;
+        box-shadow: none;
+        resize: none;
+        word-wrap: break-word;
+        outline: 0;
+        -webkit-transition: background 85ms ease-in,border-color 85ms ease-in;
+        -moz-transition: background 85ms ease-in,border-color 85ms ease-in;
+        -ms-transition: background 85ms ease-in,border-color 85ms ease-in;
+        -o-transition: background 85ms ease-in,border-color 85ms ease-in;
+        transition: background 85ms ease-in,border-color 85ms ease-in;
+        width: 100%;
+        max-height: 32px;
+
+      }
+      .shipper:focus, .consignee:focus {
+        background-color: rgba(255,255,255,.85);
+      }
     }
     .job-movement {
       padding-bottom: @job-section-padding;
