@@ -1,36 +1,38 @@
 <template name="Jobs_showPage">
+  {{#if Template.subscriptionsReady}}
+    {{#with job}}
   <div class="job">
     {{#if job}}
       <div class="row job-header">
         <div class="col-md-1 col-sm-1 job-number">{{job.number}}</div>
         <div class="col-md-1"></div>
-        <div class="col-md-4 text-center job-party"><textarea class="shipper" spellcheck="false">{{job.shipper}}</textarea></div>
+        <div class="col-md-4 text-center job-party"><textarea id="shipper" class="linebreakless" spellcheck="false">{{job.shipper}}</textarea></div>
         <div class="col-md-2 text-center job-party"> shipping to </div>
-        <div class="col-md-4 text-center job-party"><textarea class="consignee" spellcheck="false">{{job.consignee}}</textarea></div>
+        <div class="col-md-4 text-center job-party"><textarea id="consignee" class="linebreakless" spellcheck="false">{{job.consignee}}</textarea></div>
       </div>
       <div class="row job-movement text-center">
         <div class="col-md-3 col-sm-3">
           <div class="movement-checkpoint">
             <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-            <p>{{job.origin.name}} – {{job.origin.code}}</p>
+            <p><textarea id="origin" class="linebreakless" spellcheck="false">{{job.origin.name}} – {{job.origin.code}}</textarea></p>
           </div>
         </div>
         <div class="col-md-3 col-sm-3">
           <div class="movement-checkpoint">
             <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-            <p>{{job.portOfLoading.name}} – {{job.portOfLoading.code}}</p>
+            <p><textarea id="port-of-loading" class="linebreakless" spellcheck="false">{{job.portOfLoading.name}} – {{job.portOfLoading.code}}</textarea></p>
           </div>
         </div>
         <div class="col-md-3 col-sm-3">
           <div class="movement-checkpoint">
             <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-            <p>{{job.portOfDischarge.name}} – {{job.portOfDischarge.code}}</p>
+            <p><textarea id="port-of-discharge" class="linebreakless" spellcheck="false">{{job.portOfDischarge.name}} – {{job.portOfDischarge.code}}</textarea></p>
           </div>
         </div>
         <div class="col-md-3 col-sm-3">
           <div class="movement-checkpoint">
             <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-            <p>{{job.destination.name}} – {{job.destination.code}}</p>
+            <p><textarea id="destination" class="linebreakless" spellcheck="false">{{job.destination.name}} – {{job.destination.code}}</textarea></p>
           </div>
         </div>
       </div>
@@ -84,4 +86,7 @@
       Access denied.
     {{/if}}
   </div>
+    {{/with}}
+  {{else}}
+  {{/if}}
 </template>

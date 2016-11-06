@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
@@ -7,10 +8,13 @@ import { listRenderHold } from '../launch-screen.js';
 import './job-main.html';
 
 Template.Jobs_showPage.onCreated(function jobsShowPageOnCreated() {
-  this.getNumber = () => FlowRouter.getParam('_id');
-
   this.autorun(() => {
-    this.subscribe('job', { number: this.getNumber() });
+    var postNumber = FlowRouter.getParam('_id');
+    this.subscribe('job', {number: postNumber}, {
+      onReady() {
+
+      }
+    });
   });
 });
 
@@ -24,8 +28,34 @@ Template.Jobs_showPage.onRendered(function jobsShowPageOnRendered() {
 
 Template.Jobs_showPage.helpers({
   job() {
-    const instance = Template.instance();
-    const number = instance.getNumber();
-    return Jobs.findOne({ number: +number });
+    var postNumber = FlowRouter.getParam('_id');
+    return Jobs.findOne({number: +postNumber} || {});
+  },
+  shipperRows() {
+
+  }
+});
+
+Template.Jobs_showPage.events({
+  'keydown .linebreakless'(e) {
+    // Save if pressing enter
+    if (e.keyCode == 13) {
+      e.preventDefault();
+      e.target.blur();
+    }
+  },
+  'input .linebreakless'(e) {
+    // Resize textarea as needed
+    e.target.style.height = "1px";
+    e.target.style.height = e.target.scrollHeight + "px";
+  },
+  'focus textarea'(e) {
+    e.target.select();
+  },
+  'blur #shipper'(e){
+    Meteor.call('jobs.updateShipper', this._id, e.target.value);
+  },
+  'blur #consignee'(e){
+    Meteor.call('jobs.updateConsignee', this._id, e.target.value);
   }
 });

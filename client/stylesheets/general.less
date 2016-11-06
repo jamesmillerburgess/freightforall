@@ -10,6 +10,26 @@ html, body {
   p {
     margin: 0;
   }
+  textarea {
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+    border-radius: 3px;
+    background: 0 0;
+    box-shadow: none;
+    resize: none;
+    word-wrap: break-word;
+    outline: 0;
+    -webkit-transition: background 85ms ease-in,border-color 85ms ease-in;
+    -moz-transition: background 85ms ease-in,border-color 85ms ease-in;
+    -ms-transition: background 85ms ease-in,border-color 85ms ease-in;
+    -o-transition: background 85ms ease-in,border-color 85ms ease-in;
+    transition: background 85ms ease-in,border-color 85ms ease-in;
+  }
+  textarea:focus {
+    background-color: rgba(255,255,255,.85);
+    cursor: text;
+  }
   .app {
     height: 100%;
     padding: 0;
@@ -35,6 +55,3 @@ html, body {
     background: rgba(255, 255, 255, 0.0784314);
   }
 }
-
-
-

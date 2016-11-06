@@ -4,7 +4,9 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import './job-list-item.html';
 
 Template.JobListItem.helpers({
-  isActive() { return FlowRouter.getParam('_id') == this.job.number },
+  isActive() {
+    return FlowRouter.getParam('_id') == this.job.number
+  },
   numContainers() {
     if (this.job.cargo && this.job.cargo.containers)
       return this.job.cargo.containers.length;
@@ -15,7 +17,9 @@ Template.JobListItem.helpers({
       return 'archived';
     }
   },
-  isArchived() { return this.job.archived || false; }
+  isArchived() {
+    return this.job.archived || false;
+  }
 });
 
 Template.JobListItem.events({
@@ -26,5 +30,9 @@ Template.JobListItem.events({
   'click .unarchive-icon'(e) {
     e.preventDefault();
     Meteor.call('jobs.unarchive', this.job._id);
+  },
+  'click a'(e) {
+    e.preventDefault();
+    FlowRouter.go('Job.show', {_id: this.job.number});
   }
 });
