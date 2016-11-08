@@ -38,4 +38,24 @@ Meteor.methods({
   'jobs.updateDestination'(id, destination) {
     Jobs.update({_id: id}, {$set: {destination: destination}});
   },
+  'jobs.addContainer'(id) {
+    const job = Jobs.findOne({_id: id});
+
+    if (!job.cargo) {
+      Jobs.update({_id: id}, {$set: {cargo: {containers: [{number: 'UNIT001'}]}}});
+    } else if (!job.cargo.containers) {
+      Jobs.update({_id: id}, {$set: {'cargo.containers': [{number: 'UNIT001'}]}});
+    } else {
+      const numContainers = job.cargo.containers.length;
+      let unitNumber = 'UNIT';
+      if (numContainers < 99) {
+        unitNumber += '0';
+      }
+      if (numContainers < 9) {
+        unitNumber += '0';
+      }
+      unitNumber += (numContainers + 1);
+      Jobs.update({_id: id}, {$push: {'cargo.containers': {number: unitNumber}}});
+    }
+  }
 });

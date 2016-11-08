@@ -67,4 +67,7 @@ Template.Jobs_showPage.events({
   'blur #destination'(e) {
     Meteor.call('jobs.updateDestination', this._id, e.target.value);
   },
+  'click #add-container-button'() {
+    Meteor.call('jobs.addContainer', this._id);
+  },
 });
