@@ -12,7 +12,7 @@ Template.App_body.onCreated(function appBodyOnCreated() {
   Session.set('showArchivedJobs', false);
 
   // Subscribe to my jobs
-  this.subscribe('jobs.private', Meteor.userId());
+  this.subscribe('jobs.private');
 
   // Set up search filter to re-subscribe on edit of the session variable
   let self = this;

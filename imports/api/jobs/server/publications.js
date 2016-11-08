@@ -3,9 +3,9 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 import { Jobs } from '../jobs.js';
 
-Meteor.publish('jobs.private', function (userId) {
-  if (userId) {
-    return Jobs.find({creator: userId});
+Meteor.publish('jobs.private', function () {
+  if (this.userId) {
+    return Jobs.find({creator: this.userId});
   }
 });
 

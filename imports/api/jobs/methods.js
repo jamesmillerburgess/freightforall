@@ -5,8 +5,10 @@ import { Jobs } from './jobs.js';
 
 Meteor.methods({
   'jobs.addNew'(nextJobNumber) {
+    check(nextJobNumber, Number);
+
     // Make sure the user is logged in before inserting a task
-    if (! this.userId) {
+    if (!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
 
