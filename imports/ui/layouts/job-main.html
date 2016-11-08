@@ -44,52 +44,7 @@
           <div class="row job-cargo">
             <div class="col-md-12 col-sm-12">
               {{#each container in job.cargo.containers}}
-                <div class="cargo-container">
-                  <div class="row container-header">
-                    <div class="col-md-3 col-sm-3">
-                      {{container.number}}
-                    </div>
-                    <div class="col-md-2 col-sm-2">
-                      {{container.type}}
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-2 text-right">
-                      {{container.numPackages}} {{formatPackageType container.packageType container.numPackages}}
-                    </div>
-                    <div class="col-md-2 text-right">
-                      {{formatWeight container.grossWeight}}
-                    </div>
-                    <div class="col-md-2 text-right">
-                      {{formatVolume container.volume}}
-                    </div>
-                  </div>
-                  {{#each package in container.packages}}
-                    <div class="cargo-package">
-                      <div class="row">
-                        <div class="col-md-5">
-                          {{package.description}}
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="col-md-2 text-right">
-                          {{package.numPackages}} {{formatPackageType package.packageType package.numPackages}}
-                        </div>
-                        <div class="col-md-2 text-right">
-                          {{formatWeight package.grossWeight}}
-                        </div>
-                        <div class="col-md-2 text-right">
-                          {{formatVolume package.volume}}
-                        </div>
-                      </div>
-                    </div>
-                  {{/each}}
-                  <div class="cargo-package">
-                    <div class="row">
-                      <div id="add-package-button" class="icon-container">
-                        <span class="glyphicon glyphicon-plus-sign"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {{>CargoContainer container=container}}
               {{/each}}
               <div class="cargo-container">
                 <div class="row container-header">

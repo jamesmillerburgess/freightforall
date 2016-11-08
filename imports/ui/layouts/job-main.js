@@ -10,11 +10,7 @@ import './job-main.html';
 Template.Jobs_showPage.onCreated(function jobsShowPageOnCreated() {
   this.autorun(() => {
     var postNumber = FlowRouter.getParam('_id');
-    this.subscribe('job', {number: postNumber}, {
-      onReady() {
-
-      }
-    });
+    this.subscribe('job', {number: postNumber});
   });
 });
 
@@ -70,4 +66,8 @@ Template.Jobs_showPage.events({
   'click #add-container-button'() {
     Meteor.call('jobs.addContainer', this._id);
   },
+  'click .add-package-button'() {
+    console.log(this);
+    //Meteor.call('jobs.addPackage', this._id, )
+  }
 });

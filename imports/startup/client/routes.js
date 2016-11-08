@@ -5,6 +5,7 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 import '../../ui/layouts/app-body.js';
 import '../../ui/layouts/job-list-item.js';
 import '../../ui/layouts/job-main.js';
+import '../../ui/layouts/cargo-container.js';
 import '../../ui/layouts/navbar.js';
 import '../../ui/pages/root-redirector.js';
 import '../../ui/pages/app-not-found.js';
