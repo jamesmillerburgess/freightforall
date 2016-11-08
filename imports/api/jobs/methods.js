@@ -21,9 +21,21 @@ Meteor.methods({
     Jobs.update({_id: id}, {$set: {archived: false}});
   },
   'jobs.updateShipper'(id, shipper) {
-    Jobs.update({_id: id}, {$set: {shipper: shipper}})
+    Jobs.update({_id: id}, {$set: {shipper: shipper}});
   },
   'jobs.updateConsignee'(id, consignee) {
-    Jobs.update({_id: id}, {$set: {consignee: consignee}})
-  }
+    Jobs.update({_id: id}, {$set: {consignee: consignee}});
+  },
+  'jobs.updateOrigin'(id, origin) {
+    Jobs.update({_id: id}, {$set: {origin: origin}});
+  },
+  'jobs.updatePortOfLoading'(id, portOfLoading) {
+    Jobs.update({_id: id}, {$set: {portOfLoading: portOfLoading}});
+  },
+  'jobs.updatePortOfDischarge'(id, portOfDischarge) {
+    Jobs.update({_id: id}, {$set: {portOfDischarge: portOfDischarge}});
+  },
+  'jobs.updateDestination'(id, destination) {
+    Jobs.update({_id: id}, {$set: {destination: destination}});
+  },
 });

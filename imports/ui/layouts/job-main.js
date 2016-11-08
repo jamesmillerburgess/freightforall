@@ -49,10 +49,22 @@ Template.Jobs_showPage.events({
   'focus textarea'(e) {
     e.target.select();
   },
-  'blur #shipper'(e){
+  'blur #shipper'(e) {
     Meteor.call('jobs.updateShipper', this._id, e.target.value);
   },
-  'blur #consignee'(e){
+  'blur #consignee'(e) {
     Meteor.call('jobs.updateConsignee', this._id, e.target.value);
-  }
+  },
+  'blur #origin'(e) {
+    Meteor.call('jobs.updateOrigin', this._id, e.target.value);
+  },
+  'blur #port-of-loading'(e) {
+    Meteor.call('jobs.updatePortOfLoading', this._id, e.target.value);
+  },
+  'blur #port-of-discharge'(e) {
+    Meteor.call('jobs.updatePortOfDischarge', this._id, e.target.value);
+  },
+  'blur #destination'(e) {
+    Meteor.call('jobs.updateDestination', this._id, e.target.value);
+  },
 });
