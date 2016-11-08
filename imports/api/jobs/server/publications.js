@@ -24,5 +24,5 @@ Meteor.publish('job', function job(params) {
   }).validate(params);
 
   const {number} = params;
-  return Jobs.find({userId: this.userId(), number: +number});
+  return Jobs.find({userId: this.userId, number: +number});
 });

@@ -31,9 +31,6 @@ Template.Jobs_showPage.helpers({
     var postNumber = FlowRouter.getParam('_id');
     return Jobs.findOne({number: +postNumber} || {});
   },
-  shipperRows() {
-
-  }
 });
 
 Template.Jobs_showPage.events({
