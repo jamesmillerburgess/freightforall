@@ -1,91 +1,102 @@
 <template name="Jobs_showPage">
   {{#if Template.subscriptionsReady}}
     {{#with job}}
-  <div class="job">
-    {{#if job}}
-      <div class="row job-header">
-        <div class="col-md-1 col-sm-1 job-number">{{job.number}}</div>
-        <div class="col-md-1"></div>
-        <div class="col-md-4 text-center job-party"><textarea id="shipper" class="linebreakless" spellcheck="false">{{job.shipper}}</textarea></div>
-        <div class="col-md-2 text-center job-party"> shipping to </div>
-        <div class="col-md-4 text-center job-party"><textarea id="consignee" class="linebreakless" spellcheck="false">{{job.consignee}}</textarea></div>
-      </div>
-      <div class="row job-movement text-center">
-        <div class="col-md-3 col-sm-3">
-          <div class="movement-checkpoint">
-            <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-            <p><textarea id="origin" class="linebreakless" spellcheck="false">{{job.origin}}</textarea></p>
+      <div class="job">
+        {{#if job}}
+          <div class="row job-header">
+            <div class="col-md-1 col-sm-1 job-number">{{job.number}}</div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4 text-center job-party"><textarea id="shipper" class="linebreakless"
+                                                                  spellcheck="false">{{job.shipper}}</textarea></div>
+            <div class="col-md-2 text-center job-party"> shipping to</div>
+            <div class="col-md-4 text-center job-party"><textarea id="consignee" class="linebreakless"
+                                                                  spellcheck="false">{{job.consignee}}</textarea></div>
           </div>
-        </div>
-        <div class="col-md-3 col-sm-3">
-          <div class="movement-checkpoint">
-            <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-            <p><textarea id="port-of-loading" class="linebreakless" spellcheck="false">{{job.portOfLoading}}</textarea></p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3">
-          <div class="movement-checkpoint">
-            <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-            <p><textarea id="port-of-discharge" class="linebreakless" spellcheck="false">{{job.portOfDischarge}}</textarea></p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3">
-          <div class="movement-checkpoint">
-            <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-            <p><textarea id="destination" class="linebreakless" spellcheck="false">{{job.destination}}</textarea></p>
-          </div>
-        </div>
-      </div>
-      <div class="row job-cargo">
-        <div class="col-md-12 col-sm-12">
-          {{#each container in job.cargo.containers}}
-            <div class="cargo-container">
-              <div class="row container-header">
-                <div class="col-md-3 col-sm-3">
-                  {{container.number}}
-                </div>
-                <div class="col-md-2 col-sm-2">
-                  {{container.type}}
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-2 text-right">
-                  {{container.numPackages}} {{formatPackageType container.packageType container.numPackages}}
-                </div>
-                <div class="col-md-2 text-right">
-                  {{formatWeight container.grossWeight}}
-                </div>
-                <div class="col-md-2 text-right">
-                  {{formatVolume container.volume}}
-                </div>
+          <div class="row job-movement text-center">
+            <div class="col-md-3 col-sm-3">
+              <div class="movement-checkpoint">
+                <span class="glyphicon glyphicon-unchecked movement-icon"></span>
+                <p><textarea id="origin" class="linebreakless" spellcheck="false">{{job.origin}}</textarea></p>
               </div>
-              {{#each package in container.packages}}
-                <div class="cargo-package">
-                  <div class="row">
-                    <div class="col-md-5">
-                      {{package.description}}
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="movement-checkpoint">
+                <span class="glyphicon glyphicon-unchecked movement-icon"></span>
+                <p><textarea id="port-of-loading" class="linebreakless"
+                             spellcheck="false">{{job.portOfLoading}}</textarea></p>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="movement-checkpoint">
+                <span class="glyphicon glyphicon-unchecked movement-icon"></span>
+                <p><textarea id="port-of-discharge" class="linebreakless"
+                             spellcheck="false">{{job.portOfDischarge}}</textarea></p>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="movement-checkpoint">
+                <span class="glyphicon glyphicon-unchecked movement-icon"></span>
+                <p><textarea id="destination" class="linebreakless" spellcheck="false">{{job.destination}}</textarea>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row job-cargo">
+            <div class="col-md-12 col-sm-12">
+              {{#each container in job.cargo.containers}}
+                <div class="cargo-container">
+                  <div class="row container-header">
+                    <div class="col-md-3 col-sm-3">
+                      {{container.number}}
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                      {{container.type}}
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-2 text-right">
-                      {{package.numPackages}} {{formatPackageType package.packageType package.numPackages}}
+                      {{container.numPackages}} {{formatPackageType container.packageType container.numPackages}}
                     </div>
                     <div class="col-md-2 text-right">
-                      {{formatWeight package.grossWeight}}
+                      {{formatWeight container.grossWeight}}
                     </div>
                     <div class="col-md-2 text-right">
-                      {{formatVolume package.volume}}
+                      {{formatVolume container.volume}}
                     </div>
                   </div>
+                  {{#each package in container.packages}}
+                    <div class="cargo-package">
+                      <div class="row">
+                        <div class="col-md-5">
+                          {{package.description}}
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 text-right">
+                          {{package.numPackages}} {{formatPackageType package.packageType package.numPackages}}
+                        </div>
+                        <div class="col-md-2 text-right">
+                          {{formatWeight package.grossWeight}}
+                        </div>
+                        <div class="col-md-2 text-right">
+                          {{formatVolume package.volume}}
+                        </div>
+                      </div>
+                    </div>
+                  {{/each}}
                 </div>
               {{/each}}
-
+              <div class="cargo-container">
+                <div class="row container-header">
+                  <div id="add-container-button" class="icon-container">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                  </div>
+                </div>
+              </div>
             </div>
-          {{/each}}
-        </div>
+          </div>
+        {{else}}
+          Access denied.
+        {{/if}}
       </div>
-    {{else}}
-      Access denied.
-    {{/if}}
-  </div>
     {{/with}}
   {{else}}
   {{/if}}
