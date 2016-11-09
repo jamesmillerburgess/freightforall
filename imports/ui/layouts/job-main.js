@@ -46,22 +46,22 @@ Template.Jobs_showPage.events({
     e.target.select();
   },
   'blur #shipper'(e) {
-    Meteor.call('jobs.updateShipper', this._id, e.target.value);
+    Meteor.call('jobs.updateFields', this._id, {shipper: e.target.value});
   },
   'blur #consignee'(e) {
-    Meteor.call('jobs.updateConsignee', this._id, e.target.value);
+    Meteor.call('jobs.updateFields', this._id, {consignee: e.target.value});
   },
   'blur #origin'(e) {
-    Meteor.call('jobs.updateOrigin', this._id, e.target.value);
+    Meteor.call('jobs.updateFields', this._id, {origin: e.target.value});
   },
   'blur #port-of-loading'(e) {
-    Meteor.call('jobs.updatePortOfLoading', this._id, e.target.value);
+    Meteor.call('jobs.updateFields', this._id, {portOfLoading: e.target.value});
   },
   'blur #port-of-discharge'(e) {
-    Meteor.call('jobs.updatePortOfDischarge', this._id, e.target.value);
+    Meteor.call('jobs.updateFields', this._id, {portOfDischarge: e.target.value});
   },
   'blur #destination'(e) {
-    Meteor.call('jobs.updateDestination', this._id, e.target.value);
+    Meteor.call('jobs.updateFields', this._id, {destination: e.target.value});
   },
   'click #add-container-button'() {
     Meteor.call('jobs.addContainer', this._id);

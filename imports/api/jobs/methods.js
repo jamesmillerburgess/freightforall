@@ -20,23 +20,53 @@ Meteor.methods({
   'jobs.unarchive'(jobId) {
     Jobs.update({_id: jobId}, {$set: {archived: false}});
   },
-  'jobs.updateShipper'(jobId, shipper) {
-    Jobs.update({_id: jobId}, {$set: {shipper: shipper}});
-  },
-  'jobs.updateConsignee'(jobId, consignee) {
-    Jobs.update({_id: jobId}, {$set: {consignee: consignee}});
-  },
-  'jobs.updateOrigin'(jobId, origin) {
-    Jobs.update({_id: jobId}, {$set: {origin: origin}});
-  },
-  'jobs.updatePortOfLoading'(jobId, portOfLoading) {
-    Jobs.update({_id: jobId}, {$set: {portOfLoading: portOfLoading}});
-  },
-  'jobs.updatePortOfDischarge'(jobId, portOfDischarge) {
-    Jobs.update({_id: jobId}, {$set: {portOfDischarge: portOfDischarge}});
-  },
-  'jobs.updateDestination'(jobId, destination) {
-    Jobs.update({_id: jobId}, {$set: {destination: destination}});
+  'jobs.updateFields'(jobId, fields) {
+
+    // Check the parameters
+    check(jobId, String);
+    check(fields, Object);
+
+    // Build the query
+    const query = {_id: jobId};
+
+    // Build the update object
+    let update = {$set: {}};
+    if (fields.shipper) {
+      update.$set.shipper = fields.shipper;
+    }
+    if (fields.consignee) {
+      update.$set.consignee = fields.consignee;
+    }
+    if (fields.origin) {
+      update.$set.origin = fields.origin;
+    }
+    if (fields.portOfLoading) {
+      update.$set.portOfLoading = fields.portOfLoading;
+    }
+    if (fields.portOfDischarge) {
+      update.$set.portOfDischarge = fields.portOfDischarge;
+    }
+    if (fields.destination) {
+      update.$set.destination = fields.destination;
+    }
+
+    // Update the job
+    Jobs.update(query, update);
+
+    // Update search
+    // TODO: Do this with only one database call
+    const job = Jobs.findOne(query);
+    update = {
+      $set: {
+        search: job.number + ' ' +
+        job.shipper + ' ' +
+        job.consignee + ' ' +
+        job.origin + ' ' +
+        job.destination + ' '
+      }
+    };
+
+    Jobs.update(query, update);
   },
   'jobs.addContainer'(jobId) {
     const job = Jobs.findOne({_id: jobId});
