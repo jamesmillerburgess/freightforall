@@ -108,16 +108,23 @@ Meteor.methods({
 
     // Deal with missing property cases
     if (!job.cargo) {
-      Jobs.update(query, {$set: {cargo: {containers: [{number: 'UNIT001'}]}}});
+
+      // If no cargo property, then set it
+      const update = {$set: {cargo: {containers: [{number: 'UNIT001'}]}}};
+      Jobs.update(query, update);
     } else if (!job.cargo.containers) {
-      Jobs.update(query, {$set: {'cargo.containers': [{number: 'UNIT001'}]}});
+
+      // If no containers property, then set it
+      const update = {$set: {'cargo.containers': [{number: 'UNIT001'}]}};
+      Jobs.update(query, update);
     } else {
+      // If we have all properties then push a new unit with a default unit number
 
       // Build the default unit number
       let unitNumber = 'UNIT';
       const numContainers = job.cargo.containers.length + 1;
 
-      // Handle 0 characters
+      // Handle '0' characters
       if (numContainers < 100) {
         unitNumber += '0';
       }
@@ -125,7 +132,9 @@ Meteor.methods({
         unitNumber += '0';
       }
       unitNumber += numContainers;
-      Jobs.update(query, {$push: {'cargo.containers': {number: unitNumber}}});
+
+      const update = {$push: {'cargo.containers': {number: unitNumber}}};
+      Jobs.update(query, update);
     }
   },
   'jobs.addPackage'(jobId, containerIndex) {
@@ -156,7 +165,7 @@ Meteor.methods({
       let packageNumber = 'PKG';
       const numPackages = job.cargo.containers[containerIndex].packages.length + 1;
 
-      // Handle 0 characters
+      // Handle '0' characters
       if (numPackages < 100) {
         packageNumber += '0';
       }
