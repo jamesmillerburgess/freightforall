@@ -66,8 +66,4 @@ Template.Jobs_showPage.events({
   'click #add-container-button'() {
     Meteor.call('jobs.addContainer', this._id);
   },
-  'click .add-package-button'() {
-    console.log(this);
-    //Meteor.call('jobs.addPackage', this._id, )
-  }
 });

@@ -44,7 +44,9 @@
           <div class="row job-cargo">
             <div class="col-md-12 col-sm-12">
               {{#each container in job.cargo.containers}}
-                {{>CargoContainer container=container}}
+                {{#let containerIndex=@index}}
+                  {{>CargoContainer container=container job=job containerIndex=containerIndex}}
+                {{/let}}
               {{/each}}
               <div class="cargo-container">
                 <div class="row container-header">
