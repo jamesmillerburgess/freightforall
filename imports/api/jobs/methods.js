@@ -5,20 +5,47 @@ import { Jobs } from './jobs.js';
 
 Meteor.methods({
   'jobs.addNew'(nextJobNumber) {
+
+    // Check the parameters
     check(nextJobNumber, Number);
 
-    // Make sure the user is logged in before inserting a task
+    // Make sure the user is logged in
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
 
-    return Jobs.insert({creator: this.userId, number: nextJobNumber});
+    // Build the job
+    const job = {creator: this.userId, number: nextJobNumber};
+
+    Jobs.insert(job);
   },
   'jobs.archive'(jobId) {
-    Jobs.update({_id: jobId}, {$set: {archived: true}});
+
+    // Check the parameters
+    check(jobId, String);
+
+    // Build the query
+    const query = {_id: jobId};
+
+    // Build the update
+    const update = {$set: {archived: true}};
+
+    // Update the record
+    Jobs.update(query, update);
   },
   'jobs.unarchive'(jobId) {
-    Jobs.update({_id: jobId}, {$set: {archived: false}});
+
+    // Check the parameters
+    check(jobId, String);
+
+    // Build the query
+    const query = {_id: jobId};
+
+    // Build the update
+    const update = {$set: {archived: false}};
+
+    // Update the record
+    Jobs.update(query, update);
   },
   'jobs.updateFields'(jobId, fields) {
 
@@ -29,7 +56,7 @@ Meteor.methods({
     // Build the query
     const query = {_id: jobId};
 
-    // Build the update object
+    // Build the update
     let update = {$set: {}};
     if (fields.shipper) {
       update.$set.shipper = fields.shipper;
@@ -69,15 +96,28 @@ Meteor.methods({
     Jobs.update(query, update);
   },
   'jobs.addContainer'(jobId) {
-    const job = Jobs.findOne({_id: jobId});
 
+    // Check the parameters
+    check(jobId, String);
+
+    // Build the query
+    const query = {_id: jobId};
+
+    // Find the job
+    const job = Jobs.findOne(query);
+
+    // Deal with missing property cases
     if (!job.cargo) {
-      Jobs.update({_id: jobId}, {$set: {cargo: {containers: [{number: 'UNIT001'}]}}});
+      Jobs.update(query, {$set: {cargo: {containers: [{number: 'UNIT001'}]}}});
     } else if (!job.cargo.containers) {
-      Jobs.update({_id: jobId}, {$set: {'cargo.containers': [{number: 'UNIT001'}]}});
+      Jobs.update(query, {$set: {'cargo.containers': [{number: 'UNIT001'}]}});
     } else {
-      const numContainers = job.cargo.containers.length + 1;
+
+      // Build the default unit number
       let unitNumber = 'UNIT';
+      const numContainers = job.cargo.containers.length + 1;
+
+      // Handle 0 characters
       if (numContainers < 100) {
         unitNumber += '0';
       }
@@ -85,26 +125,38 @@ Meteor.methods({
         unitNumber += '0';
       }
       unitNumber += numContainers;
-      Jobs.update({_id: jobId}, {$push: {'cargo.containers': {number: unitNumber}}});
+      Jobs.update(query, {$push: {'cargo.containers': {number: unitNumber}}});
     }
   },
   'jobs.addPackage'(jobId, containerIndex) {
-    const job = Jobs.findOne({_id: jobId});
 
+    // Check the parameters
+    check(jobId, String);
+    check(containerIndex, Number);
+
+    // Build the query
+    const query = {_id: jobId};
+
+    // Find the job
+    const job = Jobs.findOne(query);
+
+    // Nothing to update if there are no containers
     if (!job.cargo || !job.cargo.containers || job.cargo.containers.length < containerIndex) {
       return;
     }
 
-    const containerField = 'cargo.containers.' + containerIndex + '.packages';
+    // Build the path to the packages
+    const packagesPath = 'cargo.containers.' + containerIndex + '.packages';
 
     if (!job.cargo.containers[containerIndex].packages) {
-      Jobs.update({_id: jobId}, {$set: {[containerField]: [{description: 'PKG001'}]}});
+      Jobs.update(query, {$set: {[packagesPath]: [{description: 'PKG001'}]}});
     } else {
 
       // Build default package description
+      let packageNumber = 'PKG';
       const numPackages = job.cargo.containers[containerIndex].packages.length + 1;
 
-      let packageNumber = 'PKG';
+      // Handle 0 characters
       if (numPackages < 100) {
         packageNumber += '0';
       }
@@ -112,7 +164,9 @@ Meteor.methods({
         packageNumber += '0';
       }
       packageNumber += numPackages;
-      Jobs.update({_id: jobId}, {$push: {[containerField]: {description: packageNumber}}})
+
+      // Update the job
+      Jobs.update(query, {$push: {[packagesPath]: {description: packageNumber}}})
     }
   },
 });
