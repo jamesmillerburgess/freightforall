@@ -14,37 +14,37 @@ Meteor.methods({
 
     return Jobs.insert({creator: this.userId, number: nextJobNumber});
   },
-  'jobs.archive'(id) {
-    Jobs.update({_id: id}, {$set: {archived: true}});
+  'jobs.archive'(jobId) {
+    Jobs.update({_id: jobId}, {$set: {archived: true}});
   },
-  'jobs.unarchive'(id) {
-    Jobs.update({_id: id}, {$set: {archived: false}});
+  'jobs.unarchive'(jobId) {
+    Jobs.update({_id: jobId}, {$set: {archived: false}});
   },
-  'jobs.updateShipper'(id, shipper) {
-    Jobs.update({_id: id}, {$set: {shipper: shipper}});
+  'jobs.updateShipper'(jobId, shipper) {
+    Jobs.update({_id: jobId}, {$set: {shipper: shipper}});
   },
-  'jobs.updateConsignee'(id, consignee) {
-    Jobs.update({_id: id}, {$set: {consignee: consignee}});
+  'jobs.updateConsignee'(jobId, consignee) {
+    Jobs.update({_id: jobId}, {$set: {consignee: consignee}});
   },
-  'jobs.updateOrigin'(id, origin) {
-    Jobs.update({_id: id}, {$set: {origin: origin}});
+  'jobs.updateOrigin'(jobId, origin) {
+    Jobs.update({_id: jobId}, {$set: {origin: origin}});
   },
-  'jobs.updatePortOfLoading'(id, portOfLoading) {
-    Jobs.update({_id: id}, {$set: {portOfLoading: portOfLoading}});
+  'jobs.updatePortOfLoading'(jobId, portOfLoading) {
+    Jobs.update({_id: jobId}, {$set: {portOfLoading: portOfLoading}});
   },
-  'jobs.updatePortOfDischarge'(id, portOfDischarge) {
-    Jobs.update({_id: id}, {$set: {portOfDischarge: portOfDischarge}});
+  'jobs.updatePortOfDischarge'(jobId, portOfDischarge) {
+    Jobs.update({_id: jobId}, {$set: {portOfDischarge: portOfDischarge}});
   },
-  'jobs.updateDestination'(id, destination) {
-    Jobs.update({_id: id}, {$set: {destination: destination}});
+  'jobs.updateDestination'(jobId, destination) {
+    Jobs.update({_id: jobId}, {$set: {destination: destination}});
   },
-  'jobs.addContainer'(id) {
-    const job = Jobs.findOne({_id: id});
+  'jobs.addContainer'(jobId) {
+    const job = Jobs.findOne({_id: jobId});
 
     if (!job.cargo) {
-      Jobs.update({_id: id}, {$set: {cargo: {containers: [{number: 'UNIT001'}]}}});
+      Jobs.update({_id: jobId}, {$set: {cargo: {containers: [{number: 'UNIT001'}]}}});
     } else if (!job.cargo.containers) {
-      Jobs.update({_id: id}, {$set: {'cargo.containers': [{number: 'UNIT001'}]}});
+      Jobs.update({_id: jobId}, {$set: {'cargo.containers': [{number: 'UNIT001'}]}});
     } else {
       const numContainers = job.cargo.containers.length + 1;
       let unitNumber = 'UNIT';
@@ -55,7 +55,7 @@ Meteor.methods({
         unitNumber += '0';
       }
       unitNumber += numContainers;
-      Jobs.update({_id: id}, {$push: {'cargo.containers': {number: unitNumber}}});
+      Jobs.update({_id: jobId}, {$push: {'cargo.containers': {number: unitNumber}}});
     }
   },
   'jobs.addPackage'(jobId, containerIndex) {
