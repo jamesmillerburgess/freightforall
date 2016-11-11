@@ -2,24 +2,22 @@
   <div class="cargo-container">
     <div class="row container-header">
       <div class="col-md-2">
-        <textarea class="container-number linebreakless" spellcheck="false">{{container.number}}</textarea>
+        {{> ElasticTextarea path=path field="number" jobId=job._id value=container.number}}
       </div>
       <div class="col-md-3">
-        <textarea class="container-type linebreakless" spellcheck="false">{{container.type}}</textarea>
+        {{> ElasticTextarea path=path field="type" jobId=job._id value=container.type}}
       </div>
       <div class="col-md-1 num-packages-column">
-        <textarea class="container-num-packages linebreakless" spellcheck="false">{{container.numPackages}}</textarea>
+        {{> ElasticTextarea path=path field="numPackages" jobId=job._id value=container.numPackages}}
       </div>
       <div class="col-md-2 package-type-column">
-        <textarea class="container-package-type linebreakless" spellcheck="false">{{formatPackageType
-          container.packageType container.numPackages}}</textarea>
+        {{> ElasticTextarea path=path field="packageType" jobId=job._id value=container.packageType}}
       </div>
       <div class="col-md-2">
-        <textarea class="container-gross-weight linebreakless" spellcheck="false">{{formatWeight
-          container.grossWeight}}</textarea>
+        {{> ElasticTextarea path=path field="grossWeight" jobId=job._id value=container.grossWeight}}
       </div>
       <div class="col-md-2">
-        <textarea class="container-volume linebreakless" spellcheck="false">{{formatVolume container.volume}}</textarea>
+        {{> ElasticTextarea path=path field="volume" jobId=job._id value=container.volume}}
       </div>
     </div>
     {{#each package in container.packages}}

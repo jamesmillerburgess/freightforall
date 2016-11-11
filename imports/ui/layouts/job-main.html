@@ -6,38 +6,37 @@
           <div class="row job-header">
             <div class="col-md-1 col-sm-1 job-number">{{job.number}}</div>
             <div class="col-md-1"></div>
-            <div class="col-md-4 text-center job-party"><textarea id="shipper" class="linebreakless"
-                                                                  spellcheck="false">{{job.shipper}}</textarea></div>
-            <div class="col-md-2 text-center job-party"> shipping to</div>
-            <div class="col-md-4 text-center job-party"><textarea id="consignee" class="linebreakless"
-                                                                  spellcheck="false">{{job.consignee}}</textarea></div>
+            <div class="col-md-4 text-center job-party">
+              {{> ElasticTextarea field="shipper" jobId=job._id value=job.shipper}}
+            </div>
+            <div class="col-md-2 text-center job-party">shipping to</div>
+            <div class="col-md-4 text-center job-party">
+              {{> ElasticTextarea field="consignee" jobId=job._id value=job.consignee}}
+            </div>
           </div>
           <div class="row job-movement text-center">
             <div class="col-md-3 col-sm-3">
               <div class="movement-checkpoint">
-                <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-                <p><textarea id="origin" class="linebreakless" spellcheck="false">{{job.origin}}</textarea></p>
+                <p><span class="glyphicon glyphicon-unchecked movement-icon"></span></p>
+                {{> ElasticTextarea field="origin" jobId=job._id value=job.origin}}
               </div>
             </div>
             <div class="col-md-3 col-sm-3">
               <div class="movement-checkpoint">
-                <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-                <p><textarea id="port-of-loading" class="linebreakless"
-                             spellcheck="false">{{job.portOfLoading}}</textarea></p>
+                <p><span class="glyphicon glyphicon-unchecked movement-icon"></span></p>
+                {{> ElasticTextarea field="portOfLoading" jobId=job._id value=job.portOfLoading}}
               </div>
             </div>
             <div class="col-md-3 col-sm-3">
               <div class="movement-checkpoint">
-                <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-                <p><textarea id="port-of-discharge" class="linebreakless"
-                             spellcheck="false">{{job.portOfDischarge}}</textarea></p>
+                <p><span class="glyphicon glyphicon-unchecked movement-icon"></span></p>
+                {{> ElasticTextarea field="portOfDischarge" jobId=job._id value=job.portOfDischarge}}
               </div>
             </div>
             <div class="col-md-3 col-sm-3">
               <div class="movement-checkpoint">
-                <span class="glyphicon glyphicon-unchecked movement-icon"></span>
-                <p><textarea id="destination" class="linebreakless" spellcheck="false">{{job.destination}}</textarea>
-                </p>
+                <p><span class="glyphicon glyphicon-unchecked movement-icon"></span></p>
+                {{> ElasticTextarea field="destination" jobId=job._id value=job.destination}}
               </div>
             </div>
           </div>

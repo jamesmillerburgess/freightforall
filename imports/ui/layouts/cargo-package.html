@@ -2,19 +2,19 @@
   <div class="cargo-package">
     <div class="row">
       <div class="col-md-5">
-        <textarea class="package-description linebreakless" spellcheck="false">{{package.description}}</textarea>
+        {{> ElasticTextarea path=path field="description" jobId=job._id value=package.description}}
       </div>
       <div class="col-md-1 num-packages-column">
-        <textarea class="package-num-packages linebreakless" spellcheck="false">{{package.numPackages}}</textarea>
+        {{> ElasticTextarea path=path field="numPackages" jobId=job._id value=package.numPackages}}
       </div>
       <div class="col-md-2 package-type-column">
-        <textarea class="package-package-type linebreakless" spellcheck="false">{{package.packageType}}</textarea>
+        {{> ElasticTextarea path=path field="packageType" jobId=job._id value=package.packageType}}
       </div>
       <div class="col-md-2">
-        <textarea class="package-gross-weight linebreakless" spellcheck="false">{{package.grossWeight}}</textarea>
+        {{> ElasticTextarea path=path field="grossWeight" jobId=job._id value=package.grossWeight}}
       </div>
       <div class="col-md-2">
-        <textarea class="package-volume linebreakless" spellcheck="false">{{package.volume}}</textarea>
+        {{> ElasticTextarea path=path field="volume" jobId=job._id value=package.volume}}
       </div>
     </div>
   </div>

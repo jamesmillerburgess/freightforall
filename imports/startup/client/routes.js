@@ -7,6 +7,7 @@ import '../../ui/layouts/job-list-item.js';
 import '../../ui/layouts/job-main.js';
 import '../../ui/layouts/cargo-container.js';
 import '../../ui/layouts/cargo-package.js';
+import '../../ui/layouts/elastic-textarea';
 import '../../ui/layouts/navbar.js';
 import '../../ui/pages/root-redirector.js';
 import '../../ui/pages/app-not-found.js';

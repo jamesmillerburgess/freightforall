@@ -3,6 +3,10 @@ import { Template } from 'meteor/templating';
 
 import './cargo-container.html';
 
+Template.CargoContainer.onCreated(function jobsShowPageOnCreated() {
+  this.data.path = 'cargo.containers.' + this.data.containerIndex;
+});
+
 Template.CargoContainer.events({
   'click .add-package-button'() {
     Meteor.call('jobs.addPackage', this.job._id, this.containerIndex);
