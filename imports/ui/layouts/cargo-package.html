@@ -4,15 +4,17 @@
       <div class="col-md-5">
         <textarea class="package-description linebreakless" spellcheck="false">{{package.description}}</textarea>
       </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-2 text-right">
-        {{package.numPackages}} {{formatPackageType package.packageType package.numPackages}}
+      <div class="col-md-1 num-packages-column">
+        <textarea class="package-num-packages linebreakless" spellcheck="false">{{package.numPackages}}</textarea>
       </div>
-      <div class="col-md-2 text-right">
-        {{formatWeight package.grossWeight}}
+      <div class="col-md-2 package-type-column">
+        <textarea class="package-package-type linebreakless" spellcheck="false">{{package.packageType}}</textarea>
       </div>
-      <div class="col-md-2 text-right">
-        {{formatVolume package.volume}}
+      <div class="col-md-2">
+        <textarea class="package-gross-weight linebreakless" spellcheck="false">{{package.grossWeight}}</textarea>
+      </div>
+      <div class="col-md-2">
+        <textarea class="package-volume linebreakless" spellcheck="false">{{package.volume}}</textarea>
       </div>
     </div>
   </div>

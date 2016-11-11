@@ -230,6 +230,18 @@ Meteor.methods({
     if (fields.hasOwnProperty('description')) {
       update.$set[path+'.description'] = fields.description;
     }
+    if (fields.hasOwnProperty('numPackages')) {
+      update.$set[path+'.numPackages'] = fields.numPackages;
+    }
+    if (fields.hasOwnProperty('packageType')) {
+      update.$set[path+'.packageType'] = fields.packageType;
+    }
+    if (fields.hasOwnProperty('grossWeight')) {
+      update.$set[path+'.grossWeight'] = fields.grossWeight;
+    }
+    if (fields.hasOwnProperty('volume')) {
+      update.$set[path+'.volume'] = fields.volume;
+    }
 
     // Update the job
     Jobs.update(query, update);

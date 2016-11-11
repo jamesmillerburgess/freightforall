@@ -59,7 +59,7 @@
         min-height: 28px;
         .container-header {
           padding-top: 3px;
-          padding-bottom: 3px;
+          padding-bottom: 0;
           margin-left: 0;
           margin-right: 0;
           .num-packages-column, .package-type-column {
@@ -86,10 +86,16 @@
             margin-bottom: 6px;
             margin-left: -10px;
             margin-right: -10px;
+            .num-packages-column, .package-type-column {
+              padding: 0;
+            }
             textarea {
               height: 24px;
               width: 100%;
               text-align: left;
+            }
+            .package-num-packages, .package-gross-weight, .package-volume {
+              text-align: right;
             }
           }
         }
