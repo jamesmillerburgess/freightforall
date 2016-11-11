@@ -1,28 +1,30 @@
 <template name="CargoContainer">
   <div class="cargo-container">
     <div class="row container-header">
-      <div class="col-md-3 col-sm-3">
-        {{container.number}}
+      <div class="col-md-2">
+        <textarea class="container-number linebreakless" spellcheck="false">{{container.number}}</textarea>
       </div>
-      <div class="col-md-2 col-sm-2">
-        {{container.type}}
+      <div class="col-md-3">
+        <textarea class="container-type linebreakless" spellcheck="false">{{container.type}}</textarea>
       </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-2 text-right">
-        {{container.numPackages}} {{formatPackageType container.packageType container.numPackages}}
+      <div class="col-md-1 num-packages-column">
+        <textarea class="container-num-packages linebreakless" spellcheck="false">{{container.numPackages}}</textarea>
       </div>
-      <div class="col-md-2 text-right">
-        {{formatWeight container.grossWeight}}
+      <div class="col-md-2 package-type-column">
+         <textarea class="container-package-type linebreakless" spellcheck="false">{{formatPackageType container.packageType container.numPackages}}</textarea>
       </div>
-      <div class="col-md-2 text-right">
-        {{formatVolume container.volume}}
+      <div class="col-md-2">
+        <textarea class="container-gross-weight linebreakless" spellcheck="false">{{formatWeight container.grossWeight}}</textarea>
+      </div>
+      <div class="col-md-2">
+        <textarea class="container-volume linebreakless" spellcheck="false">{{formatVolume container.volume}}</textarea>
       </div>
     </div>
     {{#each package in container.packages}}
       <div class="cargo-package">
         <div class="row">
           <div class="col-md-5">
-            {{package.description}}
+            <textarea class="package-description linebreakless" spellcheck="false">{{package.description}}</textarea>
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-2 text-right">

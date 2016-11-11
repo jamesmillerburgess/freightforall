@@ -58,22 +58,22 @@ Meteor.methods({
 
     // Build the update
     let update = {$set: {}};
-    if (fields.shipper) {
+    if (fields.hasOwnProperty('shipper')) {
       update.$set.shipper = fields.shipper;
     }
-    if (fields.consignee) {
+    if (fields.hasOwnProperty('consignee')) {
       update.$set.consignee = fields.consignee;
     }
-    if (fields.origin) {
+    if (fields.hasOwnProperty('origin')) {
       update.$set.origin = fields.origin;
     }
-    if (fields.portOfLoading) {
+    if (fields.hasOwnProperty('portOfLoading')) {
       update.$set.portOfLoading = fields.portOfLoading;
     }
-    if (fields.portOfDischarge) {
+    if (fields.hasOwnProperty('portOfDischarge')) {
       update.$set.portOfDischarge = fields.portOfDischarge;
     }
-    if (fields.destination) {
+    if (fields.hasOwnProperty('destination')) {
       update.$set.destination = fields.destination;
     }
 
@@ -136,6 +136,41 @@ Meteor.methods({
       const update = {$push: {'cargo.containers': {number: unitNumber}}};
       Jobs.update(query, update);
     }
+  },
+  'jobs.updateContainer'(jobId, containerIndex, fields) {
+
+    // Check the parameters
+    check(jobId, String);
+    check(containerIndex, Number);
+    check(fields, Object);
+
+    // Build the query
+    const query = {_id: jobId};
+
+    // Build the update
+    const containerPath = 'cargo.containers.' + containerIndex;
+    let update = {$set: {}};
+    if (fields.hasOwnProperty('number')) {
+      update.$set[containerPath+'.number'] = fields.number;
+    }
+    if (fields.hasOwnProperty('type')) {
+      update.$set[containerPath+'.type'] = fields.type;
+    }
+    if (fields.hasOwnProperty('numPackages')) {
+      update.$set[containerPath+'.numPackages'] = fields.numPackages;
+    }
+    if (fields.hasOwnProperty('packageType')) {
+      update.$set[containerPath+'.packageType'] = fields.packageType;
+    }
+    if (fields.hasOwnProperty('grossWeight')) {
+      update.$set[containerPath+'.grossWeight'] = fields.grossWeight;
+    }
+    if (fields.hasOwnProperty('volume')) {
+      update.$set[containerPath+'.volume'] = fields.volume;
+    }
+
+    // Update the job
+    Jobs.update(query, update);
   },
   'jobs.addPackage'(jobId, containerIndex) {
 

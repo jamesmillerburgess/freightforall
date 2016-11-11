@@ -74,19 +74,28 @@ UI.registerHelper('formatNumContainers', function (context) {
 });
 
 UI.registerHelper('formatWeight', function (context) {
+  return context;
+  /*
   if (context) {
     return (Math.round(+context * 1000) / 1000).toFixed(3) + ' kg';
   }
+  */
 });
 
 UI.registerHelper('formatVolume', function (context) {
+  return context;
+  /*
   if (context) {
     return (Math.round(+context * 1000) / 1000).toFixed(3) + ' cbm';
   }
+  */
 });
 
 UI.registerHelper('formatPackageType', function (context, numPackages) {
+  return context;
+  /*
   if (context) {
     return context + (numPackages == 1 ? '' : 's');
   }
+  */
 });
