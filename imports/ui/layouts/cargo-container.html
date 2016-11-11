@@ -11,33 +11,21 @@
         <textarea class="container-num-packages linebreakless" spellcheck="false">{{container.numPackages}}</textarea>
       </div>
       <div class="col-md-2 package-type-column">
-         <textarea class="container-package-type linebreakless" spellcheck="false">{{formatPackageType container.packageType container.numPackages}}</textarea>
+        <textarea class="container-package-type linebreakless" spellcheck="false">{{formatPackageType
+          container.packageType container.numPackages}}</textarea>
       </div>
       <div class="col-md-2">
-        <textarea class="container-gross-weight linebreakless" spellcheck="false">{{formatWeight container.grossWeight}}</textarea>
+        <textarea class="container-gross-weight linebreakless" spellcheck="false">{{formatWeight
+          container.grossWeight}}</textarea>
       </div>
       <div class="col-md-2">
         <textarea class="container-volume linebreakless" spellcheck="false">{{formatVolume container.volume}}</textarea>
       </div>
     </div>
     {{#each package in container.packages}}
-      <div class="cargo-package">
-        <div class="row">
-          <div class="col-md-5">
-            <textarea class="package-description linebreakless" spellcheck="false">{{package.description}}</textarea>
-          </div>
-          <div class="col-md-1"></div>
-          <div class="col-md-2 text-right">
-            {{package.numPackages}} {{formatPackageType package.packageType package.numPackages}}
-          </div>
-          <div class="col-md-2 text-right">
-            {{formatWeight package.grossWeight}}
-          </div>
-          <div class="col-md-2 text-right">
-            {{formatVolume package.volume}}
-          </div>
-        </div>
-      </div>
+      {{#let containerIndex=@index}}
+        {{> CargoPackage package=package job=job containerIndex=containerIndex}}
+      {{/let}}
     {{/each}}
     <div class="cargo-package">
       <div class="row">

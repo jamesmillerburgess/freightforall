@@ -1,0 +1,2 @@
+import './cargo-package.html';
+
