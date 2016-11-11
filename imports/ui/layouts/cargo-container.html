@@ -23,8 +23,8 @@
       </div>
     </div>
     {{#each package in container.packages}}
-      {{#let containerIndex=@index}}
-        {{> CargoPackage package=package job=job containerIndex=containerIndex}}
+      {{#let packageIndex=@index}}
+        {{> CargoPackage package=package job=job packageIndex=packageIndex containerIndex=containerIndex}}
       {{/let}}
     {{/each}}
     <div class="cargo-package">

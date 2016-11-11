@@ -213,4 +213,25 @@ Meteor.methods({
       Jobs.update(query, {$push: {[packagesPath]: {description: packageNumber}}})
     }
   },
+  'jobs.updatePackage'(jobId, containerIndex, packageIndex, fields) {
+
+    // Check the parameters
+    check(jobId, String);
+    check(containerIndex, Number);
+    check(packageIndex, Number);
+    check(fields, Object);
+
+    // Build the query
+    const query = {_id: jobId};
+
+    // Build the update
+    const path = 'cargo.containers.' + containerIndex + '.packages.' + packageIndex;
+    let update = {$set: {}};
+    if (fields.hasOwnProperty('description')) {
+      update.$set[path+'.description'] = fields.description;
+    }
+
+    // Update the job
+    Jobs.update(query, update);
+  },
 });
