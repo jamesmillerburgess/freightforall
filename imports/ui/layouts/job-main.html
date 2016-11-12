@@ -5,6 +5,9 @@
         {{#if job}}
           <div class="row job-header">
             <div class="col-md-1 col-sm-1 job-number">{{job.number}}</div>
+            <div class="icon-container print-icon">
+              <span class="glyphicon glyphicon-print"></span>
+            </div>
             <div class="col-md-1"></div>
             <div class="col-md-4 text-center job-party">
               {{> ElasticTextarea field="shipper" jobId=job._id value=job.shipper}}
