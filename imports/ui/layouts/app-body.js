@@ -17,6 +17,7 @@ Template.App_body.onCreated(function appBodyOnCreated() {
   // Set up search filter to re-subscribe on edit of the session variable
   let self = this;
   Session.set('searchFilter', '');
+  Session.set('searchInput', '');
   this.autorun(() => {
     if (Session.get('searchFilter')) {
       self.subscribe('jobs.search', Session.get('searchFilter'));
