@@ -168,11 +168,11 @@ function updateSearch(jobId) {
   const job = Jobs.findOne(query);
   const update = {
     $set: {
-      search: (job.number || '') + ' ' +
-      (job.shipper || '') + ' ' +
-      (job.consignee || '') + ' ' +
-      (job.origin || '') + ' ' +
-      (job.destination || '') + ' '
+      search: (job.number || '')
+      + ' ' + (job.shipper || '')
+      + ' ' + (job.consignee || '')
+      + ' ' + (job.origin || '')
+      + ' ' + (job.destination || '')
     }
   };
 
