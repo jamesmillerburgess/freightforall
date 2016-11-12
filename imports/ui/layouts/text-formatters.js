@@ -11,7 +11,7 @@ UI.registerHelper('formatText', function (context) {
       let regex = new RegExp(searchTokens[t], 'gi');
       let result;
       while ((result = regex.exec(formattedText)) !== null) {
-        pairs.push([result.index, result.index + searchTokens[t].length])
+        pairs.push([result.index, result.index + searchTokens[t].length]);
       }
     }
   }
@@ -31,12 +31,14 @@ UI.registerHelper('formatText', function (context) {
         found = true;
       }
     }
+
     if (found) {
       count++;
     } else {
       if (count > 0) {
         reduced.push([c - count, c]);
       }
+
       count = 0;
     }
   }
@@ -76,26 +78,26 @@ UI.registerHelper('formatNumContainers', function (context) {
 UI.registerHelper('formatWeight', function (context) {
   return context;
   /*
-  if (context) {
-    return (Math.round(+context * 1000) / 1000).toFixed(3) + ' kg';
-  }
-  */
+   if (context) {
+   return (Math.round(+context * 1000) / 1000).toFixed(3) + ' kg';
+   }
+   */
 });
 
 UI.registerHelper('formatVolume', function (context) {
   return context;
   /*
-  if (context) {
-    return (Math.round(+context * 1000) / 1000).toFixed(3) + ' cbm';
-  }
-  */
+   if (context) {
+   return (Math.round(+context * 1000) / 1000).toFixed(3) + ' cbm';
+   }
+   */
 });
 
 UI.registerHelper('formatPackageType', function (context, numPackages) {
   return context;
   /*
-  if (context) {
-    return context + (numPackages == 1 ? '' : 's');
-  }
-  */
+   if (context) {
+   return context + (numPackages == 1 ? '' : 's');
+   }
+   */
 });

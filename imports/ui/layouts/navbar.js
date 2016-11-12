@@ -11,7 +11,7 @@ Template.Navbar.onCreated(function navBarOnCreated() {
 
 Template.Navbar.events({
   'click #add-job'() {
-    const lastJob = Jobs.findOne({}, {sort: {number: -1}});
+    const lastJob = Jobs.findOne({}, { sort: { number: -1 } });
 
     let nextJobNumber = 1;
     if (lastJob) {
@@ -20,6 +20,6 @@ Template.Navbar.events({
 
     Meteor.call('jobs.addNew', nextJobNumber);
 
-    FlowRouter.go('/job/' + nextJobNumber)
-  }
+    FlowRouter.go('/job/' + nextJobNumber);
+  },
 });

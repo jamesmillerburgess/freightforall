@@ -11,7 +11,7 @@ import './job-main.html';
 Template.Jobs_showPage.onCreated(function onCreated() {
   this.autorun(() => {
     var postNumber = FlowRouter.getParam('_id');
-    this.subscribe('job', {number: postNumber});
+    this.subscribe('job', { number: postNumber });
   });
 });
 
@@ -26,11 +26,12 @@ Template.Jobs_showPage.onRendered(function onRendered() {
 Template.Jobs_showPage.helpers({
   job() {
     const postNumber = FlowRouter.getParam('_id');
-    return Jobs.findOne({number: +postNumber} || {});
+    return Jobs.findOne({ number: +postNumber } || {});
   },
+
   containerPath(index) {
     return 'cargo.containers.' + index;
-  }
+  },
 });
 
 Template.Jobs_showPage.events({

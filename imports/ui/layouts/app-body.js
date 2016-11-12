@@ -15,40 +15,44 @@ Template.App_body.onCreated(function appBodyOnCreated() {
   this.subscribe('jobs.private');
 
   // Set up search filter to re-subscribe on edit of the session variable
-  let self = this;
+  let _this = this;
   Session.set('searchFilter', '');
   Session.set('searchInput', '');
   this.autorun(() => {
     if (Session.get('searchFilter')) {
-      self.subscribe('jobs.search', Session.get('searchFilter'));
+      _this.subscribe('jobs.search', Session.get('searchFilter'));
     }
   });
 });
 
 Template.App_body.helpers({
   activeJobs() {
-    return Jobs.find({archived: {$ne: true}}, {sort: {number: -1}});
+    return Jobs.find({ archived: { $ne: true } }, { sort: { number: -1 } });
   },
+
   filteredJobs() {
     if (!Session.get('searchFilter'))
       return;
 
     // Search with the filter
     let cursor = Jobs.find(
-      {search: {$regex: Session.get('searchFilter'), $options: 'gi'}},
-      {limit: 10}
+      { search: { $regex: Session.get('searchFilter'), $options: 'gi' } },
+      { limit: 10 }
     );
     return cursor;
   },
+
   archivedJobs() {
-    return Jobs.find({archived: true}, {sort: {number: -1}});
+    return Jobs.find({ archived: true }, { sort: { number: -1 } });
   },
+
   showArchivedJobs() {
     return Session.get('showArchivedJobs');
   },
+
   searching() {
     return Session.get('searchInput');
-  }
+  },
 })
 ;
 
@@ -56,9 +60,11 @@ Template.App_body.events({
   'click .show-archived-link'() {
     Session.set('showArchivedJobs', true);
   },
+
   'click .hide-archived-link'() {
     Session.set('showArchivedJobs', false);
   },
+
   'input .sidebar-search'(e) {
     // Store the input value
     Session.set('searchInput', e.target.value);
@@ -72,7 +78,8 @@ Template.App_body.events({
     for (let w in words) {
       searchFilter += '(?=.*' + words[w] + ')';
     }
+
     searchFilter += '.+';
     Session.set('searchFilter', searchFilter);
-  }
+  },
 });

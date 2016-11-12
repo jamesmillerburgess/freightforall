@@ -18,18 +18,18 @@ FlowRouter.route('/', {
   name: 'App.home',
   action() {
     BlazeLayout.render('App_body', { main: 'App_rootRedirector' });
-  }
+  },
 });
 
 FlowRouter.route('/job/:_id', {
   name: 'Job.show',
   action() {
     BlazeLayout.render('App_body', { content: 'Jobs_showPage' });
-  }
+  },
 });
 
 FlowRouter.notFound = {
   action() {
-    BlazeLayout.render('App_body', { main: 'App_notFound'});
-  }
+    BlazeLayout.render('App_body', { main: 'App_notFound' });
+  },
 };
