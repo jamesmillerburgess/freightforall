@@ -43,13 +43,11 @@
           <div class="row job-cargo">
             <div class="col-md-12 col-sm-12">
               {{#each container in job.cargo.containers}}
-                {{#let containerIndex=@index}}
-                  {{>CargoContainer container=container job=job containerIndex=containerIndex}}
-                {{/let}}
+                {{>CargoContainer path=(containerPath @index) container=container job=job containerIndex=@index}}
               {{/each}}
               <div class="cargo-container">
                 <div class="row container-header">
-                  <div id="add-container-button" class="icon-container">
+                  <div class="icon-container add-container-button">
                     <span class="glyphicon glyphicon-plus-sign"></span>
                   </div>
                 </div>

@@ -18,11 +18,12 @@ Meteor.publish('jobs.search', function (filter) {
 
 // Necessary if the job is already subscribed in the sidebar?
 Meteor.publish('job', function job(params) {
+  if (this.userId) {
+    new SimpleSchema({
+      number: {type: String},
+    }).validate(params);
 
-  new SimpleSchema({
-    number: {type: String},
-  }).validate(params);
-
-  const {number} = params;
-  return Jobs.find({userId: this.userId, number: +number});
+    const {number} = params;
+    return Jobs.find({userId: this.userId, number: +number});
+  }
 });

@@ -157,41 +157,6 @@ Meteor.methods({
       Jobs.update(query, update);
     }
   },
-  'jobs.updateContainer'(jobId, containerIndex, fields) {
-
-    // Check the parameters
-    check(jobId, String);
-    check(containerIndex, Number);
-    check(fields, Object);
-
-    // Build the query
-    const query = {_id: jobId};
-
-    // Build the update
-    const containerPath = 'cargo.containers.' + containerIndex;
-    let update = {$set: {}};
-    if (fields.hasOwnProperty('number')) {
-      update.$set[containerPath+'.number'] = fields.number;
-    }
-    if (fields.hasOwnProperty('type')) {
-      update.$set[containerPath+'.type'] = fields.type;
-    }
-    if (fields.hasOwnProperty('numPackages')) {
-      update.$set[containerPath+'.numPackages'] = fields.numPackages;
-    }
-    if (fields.hasOwnProperty('packageType')) {
-      update.$set[containerPath+'.packageType'] = fields.packageType;
-    }
-    if (fields.hasOwnProperty('grossWeight')) {
-      update.$set[containerPath+'.grossWeight'] = fields.grossWeight;
-    }
-    if (fields.hasOwnProperty('volume')) {
-      update.$set[containerPath+'.volume'] = fields.volume;
-    }
-
-    // Update the job
-    Jobs.update(query, update);
-  },
   'jobs.addPackage'(jobId, containerIndex) {
 
     // Check the parameters
@@ -232,38 +197,5 @@ Meteor.methods({
       // Update the job
       Jobs.update(query, {$push: {[packagesPath]: {description: packageNumber}}})
     }
-  },
-  'jobs.updatePackage'(jobId, containerIndex, packageIndex, fields) {
-
-    // Check the parameters
-    check(jobId, String);
-    check(containerIndex, Number);
-    check(packageIndex, Number);
-    check(fields, Object);
-
-    // Build the query
-    const query = {_id: jobId};
-
-    // Build the update
-    const path = 'cargo.containers.' + containerIndex + '.packages.' + packageIndex;
-    let update = {$set: {}};
-    if (fields.hasOwnProperty('description')) {
-      update.$set[path+'.description'] = fields.description;
-    }
-    if (fields.hasOwnProperty('numPackages')) {
-      update.$set[path+'.numPackages'] = fields.numPackages;
-    }
-    if (fields.hasOwnProperty('packageType')) {
-      update.$set[path+'.packageType'] = fields.packageType;
-    }
-    if (fields.hasOwnProperty('grossWeight')) {
-      update.$set[path+'.grossWeight'] = fields.grossWeight;
-    }
-    if (fields.hasOwnProperty('volume')) {
-      update.$set[path+'.volume'] = fields.volume;
-    }
-
-    // Update the job
-    Jobs.update(query, update);
   },
 });

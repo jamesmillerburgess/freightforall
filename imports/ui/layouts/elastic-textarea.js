@@ -1,13 +1,12 @@
 import './elastic-textarea.html';
 
-Template.ElasticTextarea.onRendered(function elasticTextareaOnRendered() {
-  let containerNumber = this.find('textarea');
-  containerNumber.style.height = "1px";
-  containerNumber.style.height = containerNumber.scrollHeight + "px";
+Template.ElasticTextarea.onRendered(function onRendered() {
+  resize(this.find('textarea'));
 });
 
 Template.ElasticTextarea.events({
   'keydown textarea'(e) {
+
     // Save if pressing enter
     if (e.keyCode == 13) {
       e.preventDefault();
@@ -15,14 +14,20 @@ Template.ElasticTextarea.events({
     }
   },
   'input textarea'(e) {
-    // Resize textarea as needed
-    e.target.style.height = "1px";
-    e.target.style.height = e.target.scrollHeight + "px";
+    resize(e.target);
   },
   'focus textarea'(e) {
+
+    // Select all text on focus
     e.target.select();
   },
   'blur textarea'(e) {
-    Meteor.call('jobs.updateField', this.jobId, this.path, this.field, e.target.value);
+    const value = e.target.value || '';
+    Meteor.call('jobs.updateField', this.jobId, this.path, this.field, value);
   },
 });
+
+function resize(elem) {
+  elem.style.height = "1px";
+  elem.style.height = elem.scrollHeight + "px";
+}

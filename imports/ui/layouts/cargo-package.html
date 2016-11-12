@@ -1,7 +1,7 @@
 <template name="CargoPackage">
   <div class="cargo-package">
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-5 description-column">
         {{> ElasticTextarea path=path field="description" jobId=job._id value=package.description}}
       </div>
       <div class="col-md-1 num-packages-column">
@@ -10,10 +10,10 @@
       <div class="col-md-2 package-type-column">
         {{> ElasticTextarea path=path field="packageType" jobId=job._id value=package.packageType}}
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 gross-weight-column">
         {{> ElasticTextarea path=path field="grossWeight" jobId=job._id value=package.grossWeight}}
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 volume-column">
         {{> ElasticTextarea path=path field="volume" jobId=job._id value=package.volume}}
       </div>
     </div>

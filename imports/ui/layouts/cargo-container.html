@@ -1,10 +1,10 @@
 <template name="CargoContainer">
   <div class="cargo-container">
     <div class="row container-header">
-      <div class="col-md-2">
+      <div class="col-md-2 number-column">
         {{> ElasticTextarea path=path field="number" jobId=job._id value=container.number}}
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 type-column">
         {{> ElasticTextarea path=path field="type" jobId=job._id value=container.type}}
       </div>
       <div class="col-md-1 num-packages-column">
@@ -13,17 +13,15 @@
       <div class="col-md-2 package-type-column">
         {{> ElasticTextarea path=path field="packageType" jobId=job._id value=container.packageType}}
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 gross-weight-column">
         {{> ElasticTextarea path=path field="grossWeight" jobId=job._id value=container.grossWeight}}
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 volume-column">
         {{> ElasticTextarea path=path field="volume" jobId=job._id value=container.volume}}
       </div>
     </div>
     {{#each package in container.packages}}
-      {{#let packageIndex=@index}}
-        {{> CargoPackage package=package job=job packageIndex=packageIndex containerIndex=containerIndex}}
-      {{/let}}
+      {{> CargoPackage path=(packagePath @index) package=package job=job packageIndex=@index containerIndex=containerIndex}}
     {{/each}}
     <div class="cargo-package">
       <div class="row">
