@@ -73,14 +73,8 @@ Meteor.startup(() => {
         shipper: 'AIA Engineering Ltd',
         consignee: 'Hello Bibles Inc',
         numContainers: 1,
-        origin: {
-          name: 'Nhava Sheva',
-          code: 'INNSA'
-        },
-        destination: {
-          name: 'Felixstowe',
-          code: 'GBFXT'
-        },
+        origin: 'Nhava Sheva',
+        destination: 'Felixstowe',
       },
       {
         number: 3,
@@ -96,16 +90,16 @@ Meteor.startup(() => {
         shipper: 'Siemens',
         consignee: 'Nokia Corp',
         numContainers: 3,
-        originLocation: 'DEMUN',
-        destinationLocation: 'CNSNG'
+        origin: 'DEMUN',
+        destination: 'CNSNG'
       },
       {
         number: 1,
         shipper: 'Microsoft Corporation',
         consignee: 'Apple Computer',
         numContainers: 1,
-        originLocation: 'USPRT',
-        destinationLocation: 'JPTKY'
+        origin: 'USPRT',
+        destination: 'JPTKY'
       },
     ];
 
@@ -124,8 +118,8 @@ Meteor.startup(() => {
         search: job.number+' '+
           job.shipper+' '+
           job.consignee+' '+
-          (job.origin ? job.origin.code : '')+' '+
-          (job.destination ? job.destination.code : '')+' '
+          job.origin+' '+
+          job.destination+' '
       });
     });
   }

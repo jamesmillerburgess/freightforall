@@ -66,54 +66,9 @@ Meteor.methods({
 
     // Update the job
     Jobs.update(query, update);
-  },
-  'jobs.updateFields'(jobId, fields) {
-
-    // Check the parameters
-    check(jobId, String);
-    check(fields, Object);
-
-    // Build the query
-    const query = {_id: jobId};
-
-    // Build the update
-    let update = {$set: {}};
-    if (fields.hasOwnProperty('shipper')) {
-      update.$set.shipper = fields.shipper;
-    }
-    if (fields.hasOwnProperty('consignee')) {
-      update.$set.consignee = fields.consignee;
-    }
-    if (fields.hasOwnProperty('origin')) {
-      update.$set.origin = fields.origin;
-    }
-    if (fields.hasOwnProperty('portOfLoading')) {
-      update.$set.portOfLoading = fields.portOfLoading;
-    }
-    if (fields.hasOwnProperty('portOfDischarge')) {
-      update.$set.portOfDischarge = fields.portOfDischarge;
-    }
-    if (fields.hasOwnProperty('destination')) {
-      update.$set.destination = fields.destination;
-    }
-
-    // Update the job
-    Jobs.update(query, update);
 
     // Update search
-    // TODO: Do this with only one database call
-    const job = Jobs.findOne(query);
-    update = {
-      $set: {
-        search: job.number + ' ' +
-        job.shipper + ' ' +
-        job.consignee + ' ' +
-        job.origin + ' ' +
-        job.destination + ' '
-      }
-    };
-
-    Jobs.update(query, update);
+    updateSearch(jobId);
   },
   'jobs.addContainer'(jobId) {
 
@@ -199,3 +154,28 @@ Meteor.methods({
     }
   },
 });
+
+function updateSearch(jobId) {
+
+  // Check the parameters
+  check(jobId, String);
+
+  // Build the query
+  const query = {_id: jobId};
+
+  // Build the update
+  // TODO: Once mongodb supports functions in-query, we don't have to make two calls
+  const job = Jobs.findOne(query);
+  const update = {
+    $set: {
+      search: (job.number || '') + ' ' +
+      (job.shipper || '') + ' ' +
+      (job.consignee || '') + ' ' +
+      (job.origin || '') + ' ' +
+      (job.destination || '') + ' '
+    }
+  };
+
+  // Update the job
+  Jobs.update(query, update);
+}

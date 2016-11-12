@@ -13,7 +13,9 @@ Meteor.publish('jobs.search', function (filter) {
   if (!filter) {
     return;
   }
-  return Jobs.find({search: {$regex: filter, $options: 'i'}}, {limit: 10});
+  if (this.userId) {
+    return Jobs.find({creator: this.userId, search: {$regex: filter, $options: 'i'}}, {limit: 10});
+  }
 });
 
 // Necessary if the job is already subscribed in the sidebar?
