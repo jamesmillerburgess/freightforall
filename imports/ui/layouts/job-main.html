@@ -5,7 +5,7 @@
         {{#if job}}
           <div class="row job-header">
             <div class="col-md-1 col-sm-1 job-number">{{job.number}}</div>
-            <div class="icon-container print-icon">
+            <div class="icon-container print-icon" data-toggle="modal" data-target="#printDialog">
               <span class="glyphicon glyphicon-print"></span>
             </div>
             <div class="col-md-1"></div>
@@ -64,4 +64,19 @@
     {{/with}}
   {{else}}
   {{/if}}
+  <!-- Modal -->
+  <div class="modal fade" id="printDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Bill of Lading</h4>
+        </div>
+        <div class="modal-body">
+          <embed class="print-preview" src="">
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

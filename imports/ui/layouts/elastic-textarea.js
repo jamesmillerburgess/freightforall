@@ -1,7 +1,9 @@
 import './elastic-textarea.html';
 
 Template.ElasticTextarea.onRendered(function onRendered() {
-  resize(this.find('textarea'));
+  let elem = this.find('textarea');
+  elem.style.height = '1px';
+  elem.style.height = elem.scrollHeight + 'px';
 });
 
 Template.ElasticTextarea.events({
@@ -15,7 +17,8 @@ Template.ElasticTextarea.events({
   },
 
   'input textarea'(e) {
-    resize(e.target);
+    e.target.style.height = '1px';
+    e.target.style.height = e.target.scrollHeight + 'px';
   },
 
   'focus textarea'(e) {
@@ -29,8 +32,3 @@ Template.ElasticTextarea.events({
     Meteor.call('jobs.updateField', this.jobId, this.path, this.field, value);
   },
 });
-
-function resize(elem) {
-  elem.style.height = '1px';
-  elem.style.height = elem.scrollHeight + 'px';
-}

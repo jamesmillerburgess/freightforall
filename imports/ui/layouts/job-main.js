@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { BillOfLading } from '../../api/documents/bill-of-lading.js';
 
 import { Jobs } from '../../api/jobs/jobs.js';
 
@@ -37,5 +38,11 @@ Template.Jobs_showPage.helpers({
 Template.Jobs_showPage.events({
   'click .add-container-button'() {
     Meteor.call('jobs.addContainer', this._id);
+  },
+
+  'click .print-icon'() {
+    BillOfLading(this, url => {
+      $('.print-preview').attr('src', url);
+    });
   },
 });
