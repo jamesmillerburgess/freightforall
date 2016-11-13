@@ -9,14 +9,37 @@
               <span class="glyphicon glyphicon-print"></span>
             </div>
           </div>
-          <div class="row shipper">
-            <div class="col-md-4 text-center job-party">
-              {{> ElasticTextarea field="shipper" jobId=job._id value=job.shipper}}
-            </div>
-          </div>
-          <div class="row consignee">
-            <div class="col-md-4 text-center job-party">
-              {{> ElasticTextarea field="consignee" jobId=job._id value=job.consignee}}
+          <div class="parties">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="party-label">SHIPPER</label>
+                  {{> ElasticTextarea field="shipper" jobId=job._id value=job.shipper}}
+                  {{> ElasticTextarea rows=4 field="shipperAddress" jobId=job._id value=job.shipperAddress}}
+                </div>
+                <div class="form-group">
+                  <label class="party-label">CONSIGNEE</label>
+                  {{> ElasticTextarea field="consignee" jobId=job._id value=job.consignee}}
+                  {{> ElasticTextarea rows=4 field="consigneeAddress" jobId=job._id value=job.consigneeAddress}}
+                </div>
+                <div class="form-group">
+                  <label class="party-label">NOTIFY PARTY</label>
+                  {{> ElasticTextarea field="notifyParty" jobId=job._id value=job.notifyParty}}
+                  {{> ElasticTextarea rows=4 field="notifyPartyAddress" jobId=job._id value=job.notifyPartyAddress}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>CUSTOMER REFERENCE</label>
+                  {{> ElasticTextarea field="customerReference" jobId=job._id value=job.customerReference}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>BILL OF LADING NUMBER</label>
+                  {{> ElasticTextarea field="billOfLadingNumber" jobId=job._id value=job.billOfLadingNumber}}
+                </div>
+              </div>
             </div>
           </div>
           <div class="row job-movement text-center">

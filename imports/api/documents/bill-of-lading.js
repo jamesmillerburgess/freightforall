@@ -54,7 +54,11 @@ export const BillOfLading = (job, cb) => {
   }
 
   if (!job.notifyParty) {
-    job.notifyParty = '';
+    job.notifyParty = job.consignee;
+  }
+
+  if (!job.notifyPartyAddress) {
+    job.notifyPartyAddress = job.consigneeAddress;
   }
 
   if (!job.preCarriageBy) {
@@ -108,9 +112,24 @@ export const BillOfLading = (job, cb) => {
       .text(value, x + 1, y + 9);
   }
 
-  drawParty(page.margin, page.margin, 'SHIPPER', job.shipper);
-  drawParty(page.margin, page.margin + 70, 'CONSIGNEE', job.consignee);
-  drawParty(page.margin, page.margin + 140, 'NOTIFY PARTY', job.notifyParty);
+  drawParty(
+    page.margin,
+    page.margin,
+    'SHIPPER',
+    job.shipper + '\n' + job.shipperAddress
+  );
+  drawParty(
+    page.margin,
+    page.margin + 70,
+    'CONSIGNEE',
+    job.consignee + '\n' + job.consigneeAddress
+  );
+  drawParty(
+    page.margin,
+    page.margin + 140,
+    'NOTIFY PARTY',
+    job.notifyParty + '\n' + job.notifyPartyAddress
+  );
 
   function drawField(x, y, label, value) {
     doc
@@ -167,11 +186,11 @@ export const BillOfLading = (job, cb) => {
   drawField(page.rightColumnStart,
     page.margin,
     'CUSTOMER REFERENCE',
-    job.reference);
+    job.customerReference || '');
   drawField(page.rightColumnStart + page.columnWidth / 2,
     page.margin,
     'BILL OF LADING NUMBER',
-    job.number);
+    job.billOfLadingNumber || '');
 
   doc
     .font('title')
