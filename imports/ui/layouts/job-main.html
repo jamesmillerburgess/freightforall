@@ -8,11 +8,13 @@
             <div class="icon-container print-icon" data-toggle="modal" data-target="#printDialog">
               <span class="glyphicon glyphicon-print"></span>
             </div>
-            <div class="col-md-1"></div>
+          </div>
+          <div class="row shipper">
             <div class="col-md-4 text-center job-party">
               {{> ElasticTextarea field="shipper" jobId=job._id value=job.shipper}}
             </div>
-            <div class="col-md-2 text-center job-party">shipping to</div>
+          </div>
+          <div class="row consignee">
             <div class="col-md-4 text-center job-party">
               {{> ElasticTextarea field="consignee" jobId=job._id value=job.consignee}}
             </div>

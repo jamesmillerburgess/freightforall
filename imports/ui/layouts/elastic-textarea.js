@@ -1,7 +1,7 @@
 import './elastic-textarea.html';
 
 Template.ElasticTextarea.onRendered(function onRendered() {
-  let elem = this.find('textarea');
+  const elem = this.find('textarea');
   elem.style.height = '1px';
   elem.style.height = elem.scrollHeight + 'px';
 });
