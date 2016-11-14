@@ -28,16 +28,35 @@
                   {{> ElasticTextarea rows=4 field="notifyPartyAddress" jobId=job._id value=job.notifyPartyAddress}}
                 </div>
               </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label>CUSTOMER REFERENCE</label>
-                  {{> ElasticTextarea field="customerReference" jobId=job._id value=job.customerReference}}
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>CUSTOMER REFERENCE</label>
+                      {{> ElasticTextarea field="customerReference" jobId=job._id value=job.customerReference}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>BILL OF LADING NUMBER</label>
+                      {{> ElasticTextarea field="billOfLadingNumber" jobId=job._id value=job.billOfLadingNumber}}
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label>BILL OF LADING NUMBER</label>
-                  {{> ElasticTextarea field="billOfLadingNumber" jobId=job._id value=job.billOfLadingNumber}}
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group carrier">
+                      {{> ElasticTextarea field="carrier" jobId=job._id value=job.carrier}}
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-md-offset-3 bl-type">
+                    <select class="form-control">
+                      <option>WAYBILL</option>
+                      <option>ORIGINAL</option>
+                    </select>
+                    <label>NON-NEGOTIABLE</label>
+                  </div>
+
                 </div>
               </div>
             </div>
