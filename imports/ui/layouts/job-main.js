@@ -33,6 +33,10 @@ Template.Jobs_showPage.helpers({
   containerPath(index) {
     return 'cargo.containers.' + index;
   },
+
+  blTypes() {
+    return ['WAYBILL', 'ORIGINAL'];
+  }
 });
 
 Template.Jobs_showPage.events({

@@ -176,7 +176,7 @@ export const BillOfLading = (job, cb) => {
     job.portOfLoading);
   drawField(page.margin,
     page.margin + 270,
-    'PORT OF LOADING',
+    'PORT OF DISCHARGE',
     job.portOfDischarge);
   drawField(page.margin + page.columnWidth / 2,
     page.margin + 270,
@@ -195,7 +195,8 @@ export const BillOfLading = (job, cb) => {
   doc
     .font('title')
     .fontSize(26)
-    .text('Freight For All',
+    .text(
+      job.carrier,
       page.rightColumnStart,
       page.margin + 30,
       {
@@ -207,7 +208,7 @@ export const BillOfLading = (job, cb) => {
     .font('title')
     .fontSize(18)
     .text(
-      'WAYBILL',
+      job.blType,
       page.rightColumnStart,
       page.margin + 60,
       {

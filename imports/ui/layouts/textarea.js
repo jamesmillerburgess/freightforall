@@ -1,6 +1,7 @@
-import './elastic-textarea.html';
+import './textarea.html';
+import './textarea.less';
 
-Template.ElasticTextarea.onRendered(function onRendered() {
+Template.Textarea.onRendered(function onRendered() {
   if (!this.data.rows) {
     const elem = this.find('textarea');
     elem.style.height = '1px';
@@ -8,7 +9,7 @@ Template.ElasticTextarea.onRendered(function onRendered() {
   }
 });
 
-Template.ElasticTextarea.events({
+Template.Textarea.events({
   'keydown textarea'(e) {
 
     if (!this.rows) {
