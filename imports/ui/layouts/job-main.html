@@ -27,6 +27,48 @@
                   {{> Textarea field="notifyParty" jobId=job._id value=job.notifyParty}}
                   {{> Textarea rows=4 field="notifyPartyAddress" jobId=job._id value=job.notifyPartyAddress}}
                 </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="party-label">PRE-CARRIAGE BY</label>
+                      {{> Textarea field="preCarriageBy" jobId=job._id value=job.preCarriageBy}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="party-label">PLACE OF RECEIPT</label>
+                      {{> Textarea field="placeOfReceipt" jobId=job._id value=job.placeOfReceipt}}
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="party-label">VESSEL</label>
+                      {{> Textarea field="vessel" jobId=job._id value=job.vessel}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="party-label">PORT OF LOADING</label>
+                      {{> Textarea field="portOfLoading" jobId=job._id value=job.portOfLoading}}
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="party-label">PORT OF DISCHARGE</label>
+                      {{> Textarea field="portOfDischarge" jobId=job._id value=job.portOfDischarge}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="party-label">PLACE OF DELIVERY</label>
+                      {{> Textarea field="placeOfDelivery" jobId=job._id value=job.placeOfDelivery}}
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-6">
                 <div class="row">
@@ -51,41 +93,52 @@
                   </div>
                   <div class="col-md-6 col-md-offset-3 bl-type">
                     {{> Select options=blTypes field="blType" jobId=job._id value=job.blType}}
-                    <label>NON-NEGOTIABLE</label>
+                    {{#if isWaybill}}
+                      <label>NON-NEGOTIABLE</label>
+                    {{/if}}
                   </div>
-
                 </div>
               </div>
             </div>
           </div>
-          <div class="row job-movement text-center">
-            <div class="col-md-3 col-sm-3">
-              <div class="movement-checkpoint">
-                <p><span class="glyphicon glyphicon-unchecked movement-icon"></span></p>
-                {{> Textarea field="origin" jobId=job._id value=job.origin}}
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-3">
-              <div class="movement-checkpoint">
-                <p><span class="glyphicon glyphicon-unchecked movement-icon"></span></p>
-                {{> Textarea field="portOfLoading" jobId=job._id value=job.portOfLoading}}
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-3">
-              <div class="movement-checkpoint">
-                <p><span class="glyphicon glyphicon-unchecked movement-icon"></span></p>
-                {{> Textarea field="portOfDischarge" jobId=job._id value=job.portOfDischarge}}
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-3">
-              <div class="movement-checkpoint">
-                <p><span class="glyphicon glyphicon-unchecked movement-icon"></span></p>
-                {{> Textarea field="destination" jobId=job._id value=job.destination}}
-              </div>
-            </div>
-          </div>
           <div class="row job-cargo">
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-12">
+              <div class="row cargo-label-row">
+                <div class="col-md-4 cargo-label-column">
+                  <div class="col-md-5 cargo-label-column">
+                    <label>
+                      CONTAINER
+                    </label>
+                  </div>
+                  <div class="col-md-4 cargo-label-column">
+                    <label>
+                      SEAL
+                    </label>
+                  </div>
+                  <div class="col-md-3 cargo-label-column">
+                    <label>
+                      QUANTITY
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-5 cargo-label-column">
+                  <label>
+                    DESCRIPTION OF GOODS
+                  </label>
+                </div>
+                <div class="col-md-3 cargo-label-column">
+                  <div class="col-md-6 cargo-label-column">
+                    <label>
+                      GROSS WEIGHT
+                    </label>
+                  </div>
+                  <div class="col-md-6 cargo-label-column">
+                    <label>
+                      MEASUREMENT
+                    </label>
+                  </div>
+                </div>
+              </div>
               {{#each container in job.cargo.containers}}
                 {{>CargoContainer path=(containerPath @index) container=container job=job containerIndex=@index}}
               {{/each}}

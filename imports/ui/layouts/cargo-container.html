@@ -1,14 +1,16 @@
 <template name="CargoContainer">
   <div class="cargo-container">
     <div class="row container-header">
-      <div class="col-md-2 number-column">
-        {{> Textarea path=path field="number" jobId=job._id value=container.number}}
-      </div>
-      <div class="col-md-3 type-column">
-        {{> Textarea path=path field="type" jobId=job._id value=container.type}}
-      </div>
-      <div class="col-md-1 num-packages-column">
-        {{> Textarea path=path field="numPackages" jobId=job._id value=container.numPackages}}
+      <div class="col-md-4 cargo-column">
+        <div class="col-md-5 number-column cargo-column">
+          {{> Textarea path=path field="number" jobId=job._id value=container.number}}
+        </div>
+        <div class="col-md-5 type-column">
+          {{> Textarea path=path field="type" jobId=job._id value=container.type}}
+        </div>
+        <div class="col-md-2 num-packages-column">
+          {{> Textarea path=path field="numPackages" jobId=job._id value=container.numPackages}}
+        </div>
       </div>
       <div class="col-md-2 package-type-column">
         {{> Textarea path=path field="packageType" jobId=job._id value=container.packageType}}

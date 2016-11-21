@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 import './cargo-container.html';
+import './cargo-container.less';
 
 Template.CargoContainer.helpers({
   packagePath(index) {

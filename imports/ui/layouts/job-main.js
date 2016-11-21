@@ -36,7 +36,11 @@ Template.Jobs_showPage.helpers({
 
   blTypes() {
     return ['WAYBILL', 'ORIGINAL'];
-  }
+  },
+
+  isWaybill() {
+    return this.blType === 'WAYBILL';
+  },
 });
 
 Template.Jobs_showPage.events({

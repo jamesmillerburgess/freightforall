@@ -158,23 +158,28 @@ export const BillOfLading = (job, cb) => {
       .text(value, x + 1, y + 9);
   }
 
-  drawField(page.margin,
+  drawField(
+    page.margin,
     page.margin + 210,
     'PRE-CARRIAGE BY',
     job.preCarriageBy);
-  drawField(page.margin + page.columnWidth / 2,
+  drawField(
+    page.margin + page.columnWidth / 2,
     page.margin + 210,
     'PLACE OF RECEIPT',
     job.placeOfReceipt);
-  drawField(page.margin,
+  drawField(
+    page.margin,
     page.margin + 240,
     'VESSEL',
     job.vessel);
-  drawField(page.margin + page.columnWidth / 2,
+  drawField(
+    page.margin + page.columnWidth / 2,
     page.margin + 240,
     'PORT OF LOADING',
     job.portOfLoading);
-  drawField(page.margin,
+  drawField(
+    page.margin,
     page.margin + 270,
     'PORT OF DISCHARGE',
     job.portOfDischarge);

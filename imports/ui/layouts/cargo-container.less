@@ -1,0 +1,78 @@
+@import '../../../client/stylesheets/variables.less';
+
+.job-cargo {
+  padding-bottom: @job-section-padding;
+  .cargo-label-row {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .cargo-label-column {
+    padding: 0;
+  }
+  label {
+    font-size: 10px;
+    font-weight: bold;
+    padding-left: 2px;
+  }
+  .icon-container {
+    padding-left: 15px;
+  }
+  .cargo-container {
+    border-radius: 5px;
+    background-color: #ddd;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    min-height: 28px;
+    .container-header {
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 3px;
+      margin-left: 0;
+      margin-right: 0;
+      .num-packages-column, .package-type-column {
+        padding: 0;
+      }
+      textarea {
+        height: 24px;
+        width: 100%;
+        text-align: left;
+      }
+      .cargo-column {
+        padding: 0;
+      }
+      .num-packages-column, .gross-weight-column, .volume-column {
+        textarea {
+          text-align: right;
+        }
+      }
+    }
+    .cargo-package {
+      border-radius: 5px;
+      background-color: #c9c9c9;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-top: 3px;
+      .row {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin-bottom: 6px;
+        margin-left: -10px;
+        margin-right: -10px;
+        .num-packages-column, .package-type-column {
+          padding: 0;
+        }
+        textarea {
+          height: 24px;
+          width: 100%;
+          text-align: left;
+        }
+        .num-packages-column, .gross-weight-column, .volume-column {
+          textarea {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
