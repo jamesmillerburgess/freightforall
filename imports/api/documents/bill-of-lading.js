@@ -219,8 +219,9 @@ export const BillOfLading = (job, cb) => {
       {
         width: page.columnWidth,
         align: 'center',
-      })
-    .text(
+      });
+  if (job.blType === 'WAYBILL') {
+    doc.text(
       'NON-NEGOTIABLE',
       page.rightColumnStart,
       page.margin + 78,
@@ -228,6 +229,7 @@ export const BillOfLading = (job, cb) => {
         width: page.columnWidth,
         align: 'center',
       });
+  }
 
   let legalText = `Received by the Carrier from the Shipper on the terms hereof the total number \
 of Containers or packages said to contain Goods enumerated below in the box marked "Total \
