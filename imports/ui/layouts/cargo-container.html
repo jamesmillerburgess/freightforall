@@ -5,22 +5,24 @@
         <div class="col-md-5 number-column cargo-column">
           {{> Textarea path=path field="number" jobId=job._id value=container.number}}
         </div>
-        <div class="col-md-5 type-column">
+        <div class="col-md-4 type-column cargo-column">
           {{> Textarea path=path field="type" jobId=job._id value=container.type}}
         </div>
-        <div class="col-md-2 num-packages-column">
+        <div class="col-md-3 num-packages-column cargo-column">
           {{> Textarea path=path field="numPackages" jobId=job._id value=container.numPackages}}
         </div>
       </div>
-      <div class="col-md-2 package-type-column">
+      <div class="col-md-5 package-type-column cargo-column">
         {{> Textarea path=path field="packageType" jobId=job._id value=container.packageType}}
       </div>
-      <div class="col-md-2 gross-weight-column">
+      <div class="col-md-3 cargo-column">
+      <div class="col-md-6 gross-weight-column cargo-column">
         {{> Textarea path=path field="grossWeight" jobId=job._id value=container.grossWeight}}
       </div>
-      <div class="col-md-2 volume-column">
+      <div class="col-md-6 volume-column cargo-column">
         {{> Textarea path=path field="volume" jobId=job._id value=container.volume}}
       </div>
+        </div>
     </div>
     {{#each package in container.packages}}
       {{> CargoPackage path=(packagePath @index) package=package job=job packageIndex=@index containerIndex=containerIndex}}
