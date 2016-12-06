@@ -1,13 +1,15 @@
 <template name="CargoPackage">
   <div class="cargo-package">
     <div class="row">
-      <div class="col-md-5 description-column">
-        {{> Textarea path=path field="description" jobId=job._id value=package.description}}
+      <div class="col-md-4 cargo-column">
+        <div class="col-md-4 col-md-offset-5 num-packages-column cargo-column">
+          {{> Textarea path=path field="description" jobId=job._id value=package.description}}
+        </div>
+        <div class="col-md-3 num-packages-column cargo-column">
+          {{> Textarea path=path field="numPackages" jobId=job._id value=package.numPackages}}
+        </div>
       </div>
-      <div class="col-md-1 num-packages-column">
-        {{> Textarea path=path field="numPackages" jobId=job._id value=package.numPackages}}
-      </div>
-      <div class="col-md-2 package-type-column">
+      <div class="col-md-3 package-type-column cargo-column">
         {{> Textarea path=path field="packageType" jobId=job._id value=package.packageType}}
       </div>
       <div class="col-md-2 gross-weight-column">
